@@ -25,7 +25,10 @@ const Register = () => {
     name:YUP.string().required("حقل مطلوب"),
     userName: YUP.string().required("حقل مطلوب"),
     email:YUP.string().email("ادخل بريد الكتروني صحيح").required("حقل مطلوب"),
-    password: YUP.string().required("حقل مطلوب"),
+    password: YUP.string().matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{7,})/,
+      "يجب أن تحتوي كلمة المرور على 7 أحرف على الأقل، وحرف صغير واحد على الأقل، وحرف كبير واحد على الأقل، ورقم واحد على الأقل، ورمز خاص واحد على الأقل"
+    ).required("حقل مطلوب"),
     EducationalLevel:YUP.string().required("حقل مطلوب"),
     Specialization:YUP.string().required("حقل مطلوب"),
     EmploymentStatus:YUP.string().required("حقل مطلوب"),
