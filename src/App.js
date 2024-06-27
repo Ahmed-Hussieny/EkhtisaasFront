@@ -10,6 +10,13 @@ import OTP from './Pages/ForgetPassword/Otp';
 import ResetPassword from './Pages/ForgetPassword/ResetPassword';
 import HomePage from './Pages/HomePage/HomePage';
 import Layout from './Components/Layout/Layout';
+import AboutUs from './Pages/AboutUs/AboutUs';
+import OurServices from './Pages/OurServices/OurServices';
+import ContactUs from './Pages/ContactUs/ContactUs';
+import Search from './Pages/Search/Search';
+import LoginAdmin from './Pages/ADMIN/Login/LoginAdmin';
+import LayoutAdmin from './Components/Layout/LayoutAdmin';
+import AdminHomePage from './Pages/ADMIN/HomePage/AdminHomePage';
 
 function App() {
   let router = createBrowserRouter([
@@ -19,9 +26,24 @@ function App() {
     {path:'/ForgetPassword',element:<ForgetPassword/>},
     {path:'/OTP',element:<OTP/>},
     {path:'/ResetPassword',element:<ResetPassword/>},
+    {path:'/LoginAdmin',element:<LoginAdmin/>},
+    {path:'/Admin',element: <LayoutAdmin />,children:[
+      {path:'AdminHomePage',element:<AdminHomePage/>},
+      
+    ]},
     {path:'',element: <Layout />,children:[
       {path:'/HomePage',element:<HomePage/>},
+      {path:'/AboutUs',element:<AboutUs/>},
+      {path:'/OurServices',element:<OurServices/>},
+      {path:'/ContactUs',element:<ContactUs/>},
+      {path:'/Search',element:<Search/>},
+
+
+      
+      
+      
     ]},
+    
    
     
   ])

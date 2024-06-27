@@ -1,0 +1,106 @@
+@font-face {
+    font-family: Cairo;
+    src: url(/src/Assents/Fonts/Cairo-VariableFont_slnt\,wght.ttf);
+}
+.font{
+    font-family: 'Cairo';
+}
+.bgImage{
+    background-image: url('../../Assents/Images/AboutUs/Rectangle 2719 (2).png');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 200px;
+    padding-bottom: 200px;
+    /* background-origin: content-box; */
+    
+}
+
+
+/* timeLine */
+.timeline {
+	margin: 40px auto 0;
+	width: 100%;
+	background: url(../../Assents/Images/timeline-bg.jpg) center center repeat-y;
+	height: auto;
+	position: relative;
+	padding: 0 0 80px;
+	z-index:200;
+	
+}
+
+.timeline .timelineItem{
+	float: left;
+	width: 47.5%;
+	/* background: rgba(0, 0, 0, .7); */
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+	margin: 20px 0;
+	position: relative;
+	z-index: 550;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	transition: all 0.5s;
+}
+
+.timeline .timelineItem h4 {
+	color: #FFF;
+}
+
+.timeline .timelineItem p {
+	color: #FFF;
+}
+
+.timeline .timelineItem span {
+	font-size: 13px;
+	font-weight:600;
+	text-transform: uppercase;
+	color: #FFF;
+}
+
+.timeline .timelineItem2:after {
+	content: '';
+	position: absolute;
+	right: -7%;
+	display: block;
+	width: 18px;
+	height: 18px;
+	background: rgba(26, 205, 124, 1);
+	outline: 1px solid #d5d5d5;
+	border: 1px solid #ffffff;
+
+	border-radius: 100px;
+	top: 18px;
+	z-index: 20;
+}
+
+
+
+ .timeline .timelineItem:nth-of-type(2n) {
+ float: right;
+ clear: right;
+}
+
+.timeline .year + .timelineItem {
+	margin-top: -20px;
+}
+
+ .timeline .timelineItem:nth-of-type(2n):after {
+ left: -6.8%;
+}
+
+.timeline .end-icon:before {
+	clear:both;
+}
+
+
+.clear {
+	clear:both;
+}
+
+.linear{
+	background: linear-gradient(to left,rgba(76, 231, 160, 1),rgba(147, 202, 238, 1));
+}

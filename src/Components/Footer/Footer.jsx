@@ -6,7 +6,8 @@ import linkedInlogo from '../../Assents/Images/footer/Linkedin.svg'
 
 const Footer = () => {
   return (
-    <div className={[style.footerContainer ,style.font,"mt-5  pt-3"].join(" ")}>
+    <>
+      <div className={[style.footerContainer ,style.font,"mt-5  pt-3"].join(" ")}>
       <div className='container px-5 '>
         <div className='row  m-0 d-flex align-items-center gy-3'>
             <div className='col-md-5'>
@@ -29,13 +30,14 @@ const Footer = () => {
                 </div>
             </div>
         </div>
-        <div className='text-center mt-3 m5'>
+        <div className='text-center py-3 m5'>
             <p className={style.pfooterlast}>
             جميع الحقوق محفوظة لمنصة اختصاص  ©2024  
             </p>
         </div>
       </div>
     </div>
+    </>
   )
 }
 

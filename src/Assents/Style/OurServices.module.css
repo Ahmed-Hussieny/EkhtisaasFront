@@ -1,0 +1,15 @@
+@font-face {
+    font-family: Cairo;
+    src: url(/src/Assents/Fonts/Cairo-VariableFont_slnt\,wght.ttf);
+}
+.font{
+    font-family: 'Cairo';
+}
+.bgImage{
+    background: url(../../Assents/Images/OurServices/Overlay.png);
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

@@ -1,0 +1,14 @@
+@font-face {
+    font-family: Cairo;
+    src: url(/src/Assents/Fonts/Cairo-VariableFont_slnt\,wght.ttf);
+}
+.font{
+    font-family: 'Cairo';
+}
+.input::placeholder {
+    color: rgb(202, 202, 202);
+}
+.input {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}

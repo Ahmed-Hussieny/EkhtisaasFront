@@ -1,0 +1,15 @@
+@font-face {
+    font-family: Cairo;
+    src: url(/src/Assents/Fonts/Cairo-VariableFont_slnt\,wght.ttf);
+}
+body{
+    font-family: 'Cairo';
+}
+.icon-suffix{
+    margin: auto;
+}
+.item-content{
+    padding-right: 40px;
+    text-align: start;
+    margin-left: auto;
+}

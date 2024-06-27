@@ -39,7 +39,7 @@ const Navbar = () => {
                   exact
                   className={[style.navLink, 'nav-link'].join(' ')}
                   activeClassName={style.activeLink}
-                  to="/d"
+                  to="/AboutUs"
                 >
                   من نحن
                 </NavLink>
@@ -49,7 +49,7 @@ const Navbar = () => {
                   exact
                   className={[style.navLink, 'nav-link'].join(' ')}
                   activeClassName={style.activeLink}
-                  to="/s"
+                  to="/OurServices"
                 >
                   خدماتنا
                 </NavLink>
@@ -59,7 +59,7 @@ const Navbar = () => {
                   exact
                   className={[style.navLink, 'nav-link'].join(' ')}
                   activeClassName={style.activeLink}
-                  to="/dd"
+                  to="/ContactUs"
                 >
                   تواصل معنا
                 </NavLink>
@@ -69,7 +69,7 @@ const Navbar = () => {
                   exact
                   className={[style.navLink, 'nav-link'].join(' ')}
                   activeClassName={style.activeLink}
-                  to="#/ddd"
+                  to="/Search"
                 >
                   بحث
                 </NavLink>

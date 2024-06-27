@@ -1,0 +1,29 @@
+@font-face {
+    font-family: Cairo;
+    src: url(/src/Assents/Fonts/Cairo-VariableFont_slnt\,wght.ttf);
+}
+.font{
+    font-family: 'Cairo';
+}
+.bgImage{
+    background: url(../../Assents/Images/ContactUs/Background.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.linear{
+    background: linear-gradient(rgba(157, 241, 181, 1),rgba(186, 236, 253, 1));
+}
+.input{
+    width: 100%;
+    padding: 15px 10px !important;
+    margin: 10px 0px !important;
+    border-radius: 10px !important;
+    border: rgb(238, 238, 238)  2px solid !important;
+    background: rgb(255, 255, 255) !important;
+    box-shadow: rgba(124, 124, 124, 1)   !important;
+    color: rgba(124, 124, 124, 1) !important;
+}

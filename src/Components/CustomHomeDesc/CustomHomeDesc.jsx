@@ -5,9 +5,9 @@ const CustomHomeDesc = ({title,desc,img,dir}) => {
   return (
     <div className=' text-center container'>
      {(dir==='L')?
-      <div className='row gy-3 m-0 d-flex align-items-center '>
+      <div className='row gy-3 m-0 d-flex  align-items-start'>
         <div className='col-md-5'>
-          <img className='w-50 d-none d-lg-block'  src={img} alt='image'/>
+          <img className='w-5 d-none d-lg-block'  src={img} alt='image'/>
         </div>
         <div className='col-md-7 bg-white shadow-lg p-4 px-lg-5 rounded-3' >
           <h5>
@@ -19,7 +19,7 @@ const CustomHomeDesc = ({title,desc,img,dir}) => {
         </div>
         
       </div>
-      : <div className='row gy-3  m-0 d-flex align-items-center'>
+      : <div className='row gy-3  m-0 d-flex align-items-start bg'>
        
         <div className='col-md-7 bg-white shadow-lg p-4 px-lg-5 rounded-3' >
           <h5>
@@ -30,7 +30,7 @@ const CustomHomeDesc = ({title,desc,img,dir}) => {
             </p>
         </div>
         <div className='col-md-5 d-none d-lg-block'>
-          <img className='w-50  '  src={img} alt='image'/>
+          <img className='w-5  '  src={img} alt='image'/>
         </div>
       </div>}
     </div>

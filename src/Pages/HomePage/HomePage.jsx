@@ -17,7 +17,8 @@ import sep4 from "../../Assents/Images/Homepage/separators/Line 22.png";
 
 const HomePage = () => {
   return (
-    <div className={[style.font, " p-0 m-0"].join(" ")}>
+    <>
+      <div className={[style.font, " p-0 m-0"].join(" ")}>
       {/* section 1 */}
       <div className="row p-0 m-0">
         <div className="col-md-5 pe-5 d-flex justify-content-center mt-5 flex-column align-items- pb-lg-5">
@@ -70,7 +71,10 @@ const HomePage = () => {
             img={image1}
             dir={"L"}
           />
-          <img className={style.customheigth} src={sep1} alt="sep1" />
+          <div >
+          <img className={style.customheigth}  src={sep1} alt="sep1" />
+
+          </div>
           <CustomHomeDesc
             title={"نوفر وقتك وجهدك"}
             desc={
@@ -133,6 +137,7 @@ const HomePage = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
