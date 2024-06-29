@@ -164,7 +164,8 @@ function Login() {
             </p>
         </div>
         </div>
-        <div className={[style.mainContainer, "col-md-6 d-none d-lg-block"].join(" ")}>
+        <div className="col-md-6 d-none d-lg-block m-0 p-0">
+        <div className={[style.mainContainer, ].join(" ")}>
           <div className={[style.arrow, style.arrowTopLeft].join(" ")}>
             <img className="w-75" src={ArrowTop} alt="ArrowTop" />
           </div>
@@ -177,6 +178,7 @@ function Login() {
           <div className={[style.arrow, style.arrowBottomRight].join(" ")}>
             <img className="w-75" src={ArrowBottom} alt="ArrowTop" />
           </div>
+        </div>
         </div>
       </div>
     </div>

@@ -102,11 +102,12 @@ const Register = () => {
     <div>
       <div className="m-0 p-0">
         <div className="row m-0 p-0">
-          <div className={[style.mainContainer, "col-md-6"].join(" ")}>
+        <div className="col-md-6 d-none d-lg-block m-0 p-0">
+        <div className={[style.mainContainer, ].join(" ")}>
             <div className={[style.arrow, style.arrowTopLeft].join(" ")}>
               <img className="w-75" src={ArrowTop} alt="ArrowTop" />
             </div>
-
+        
             {/* Logo */}
             <div className="w-75 m-auto">
               <img className="w-100" src={logo} alt="logo" />
@@ -115,6 +116,7 @@ const Register = () => {
             <div className={[style.arrow, style.arrowBottomRight].join(" ")}>
               <img className="w-75" src={ArrowBottom} alt="ArrowTop" />
             </div>
+          </div>
           </div>
           <div style={{overflow:'auto'}} className={[style.RegisterFormContainer, "col-md-6"].join(" ")}>
             {/* Logo */}

@@ -17,6 +17,8 @@ import Search from './Pages/Search/Search';
 import LoginAdmin from './Pages/ADMIN/Login/LoginAdmin';
 import LayoutAdmin from './Components/Layout/LayoutAdmin';
 import AdminHomePage from './Pages/ADMIN/HomePage/AdminHomePage';
+import Pages from './Pages/ADMIN/Pages/Pages';
+import Specialties from './Pages/ADMIN/Specialties/Specialties';
 
 function App() {
   let router = createBrowserRouter([
@@ -26,9 +28,15 @@ function App() {
     {path:'/ForgetPassword',element:<ForgetPassword/>},
     {path:'/OTP',element:<OTP/>},
     {path:'/ResetPassword',element:<ResetPassword/>},
-    {path:'/LoginAdmin',element:<LoginAdmin/>},
+    {path:'/Admin',element:<LoginAdmin/>},
     {path:'/Admin',element: <LayoutAdmin />,children:[
       {path:'AdminHomePage',element:<AdminHomePage/>},
+      {path:'Pages',element:<Pages/>},
+      {path:'Specialties',element:<Specialties/>},
+      
+
+
+      
       
     ]},
     {path:'',element: <Layout />,children:[

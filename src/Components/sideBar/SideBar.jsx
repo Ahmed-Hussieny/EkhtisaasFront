@@ -11,7 +11,6 @@ import './SideBar.css'
 import {
   CDBSidebar,
   CDBSidebarContent,
-  CDBSidebarFooter,
   CDBSidebarHeader,
   CDBSidebarMenu,
   CDBSidebarMenuItem,
@@ -23,7 +22,7 @@ const Sidebar = () => {
     <div style={{ height: '100vh'}}>
       <CDBSidebar textColor="#fff" backgroundColor="rgba(31, 42, 68, 1)">
         <CDBSidebarHeader prefix={<div className='text-center'>
-          <img  className='w-100' src={logo}/>
+          <img  className='w-100' alt='logo' src={logo}/>
         </div>}>
           
         </CDBSidebarHeader>
@@ -31,25 +30,25 @@ const Sidebar = () => {
         <CDBSidebarContent className="sidebar-content">
           <CDBSidebarMenu>
             <NavLink exact to="/Admin/AdminHomePage" activeClassName="activeClicked">
-              <CDBSidebarMenuItem> <img src={icon1} className='ms-3'/> الرئيسية</CDBSidebarMenuItem>
+              <CDBSidebarMenuItem> <img src={icon1} alt='icon1' className='ms-3'/> الرئيسية</CDBSidebarMenuItem>
+            </NavLink>
+            <NavLink exact to="/Admin/Pages" activeClassName="activeClicked">
+              <CDBSidebarMenuItem > <img src={icon2} alt='icon2' className='ms-3'/> الصفحات</CDBSidebarMenuItem>
+            </NavLink>
+            <NavLink exact to="/Admin/Specialties" activeClassName="activeClicked">
+              <CDBSidebarMenuItem > <img src={icon3} alt='icon3' className='ms-3'/> الإستفسارات</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/tables" activeClassName="activeClicked">
-              <CDBSidebarMenuItem > <img src={icon2} className='ms-3'/> الصفحات</CDBSidebarMenuItem>
+              <CDBSidebarMenuItem > <img src={icon4} alt='icon4' className='ms-3'/> التخصصات</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/tables" activeClassName="activeClicked">
-              <CDBSidebarMenuItem > <img src={icon3} className='ms-3'/> الإستفسارات</CDBSidebarMenuItem>
+              <CDBSidebarMenuItem > <img src={icon5} alt='icon5' className='ms-3'/> الشهادات</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/tables" activeClassName="activeClicked">
-              <CDBSidebarMenuItem > <img src={icon4} className='ms-3'/> التخصصات</CDBSidebarMenuItem>
+              <CDBSidebarMenuItem > <img src={icon6} alt='icon6' className='ms-3'/> المرشدين</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/tables" activeClassName="activeClicked">
-              <CDBSidebarMenuItem > <img src={icon5} className='ms-3'/> الشهادات</CDBSidebarMenuItem>
-            </NavLink>
-            <NavLink exact to="/tables" activeClassName="activeClicked">
-              <CDBSidebarMenuItem > <img src={icon6} className='ms-3'/> المرشدين</CDBSidebarMenuItem>
-            </NavLink>
-            <NavLink exact to="/tables" activeClassName="activeClicked">
-              <CDBSidebarMenuItem > <img src={icon7} className='ms-3'/> المتخصصين</CDBSidebarMenuItem>
+              <CDBSidebarMenuItem > <img src={icon7} alt='icon7' className='ms-3'/> المتخصصين</CDBSidebarMenuItem>
             </NavLink>
           </CDBSidebarMenu>
         </CDBSidebarContent>

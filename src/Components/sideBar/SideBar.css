@@ -13,3 +13,6 @@ body{
     text-align: start;
     margin-left: auto;
 }
+.sidebar-content .activeClicked {
+    background-color: red !important;
+  }
