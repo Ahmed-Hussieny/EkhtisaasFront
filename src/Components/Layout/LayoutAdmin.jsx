@@ -4,7 +4,7 @@ import SideBar from '../sideBar/SideBar'
 
 const LayoutAdmin = () => {
   return (
-    <div className='d-flex'>
+    <div className='d-flex m- p-0'>
     <div style={{backgroundColor:'rgba(31, 42, 68, 1)'}}>
     <SideBar/>
     </div>

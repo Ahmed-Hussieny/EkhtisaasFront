@@ -43,7 +43,7 @@ const LoginAdmin = () => {
     }
     if(!(res.payload.data.status)){
       setErrorMessage(res.payload.data.errMsg)
-      setErrorMessage(res.payload.data.message)
+      // setErrorMessage(res.payload.data.message)
     }
   }
   const togglePasswordVisibility = () => {

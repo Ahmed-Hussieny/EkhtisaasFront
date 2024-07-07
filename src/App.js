@@ -19,6 +19,18 @@ import LayoutAdmin from './Components/Layout/LayoutAdmin';
 import AdminHomePage from './Pages/ADMIN/HomePage/AdminHomePage';
 import Pages from './Pages/ADMIN/Pages/Pages';
 import Specialties from './Pages/ADMIN/Specialties/Specialties';
+import AddNewSpecialties from './Pages/ADMIN/Specialties/AddNewSpecialties';
+import MainSpecialties from './Pages/ADMIN/MainSpecialties/MainSpecialties';
+import AddNewSubSpecialties from './Pages/ADMIN/MainSpecialties/AddNewSubSpecialties';
+import Certificates from './Pages/ADMIN/Certificates/Certificates';
+import AddNewCertificate from './Pages/ADMIN/Certificates/AddNewCertificate';
+import ShowCertificate from './Pages/ADMIN/Certificates/ShowCertificate';
+import Advisors from './Pages/ADMIN/Advisors/Advisors';
+import AddAdvisors from './Pages/ADMIN/Advisors/AddAdvisors';
+import ShowAdvisors from './Pages/ADMIN/Advisors/ShowAdvisors';
+import Specialist from './Pages/ADMIN/Specialist/Specialist';
+import AddSpecialist from './Pages/ADMIN/Specialist/AddSpecialist';
+import ShowSpecialist from './Pages/ADMIN/Specialist/ShowSpecialist';
 
 function App() {
   let router = createBrowserRouter([
@@ -33,10 +45,22 @@ function App() {
       {path:'AdminHomePage',element:<AdminHomePage/>},
       {path:'Pages',element:<Pages/>},
       {path:'Specialties',element:<Specialties/>},
+      {path:'addNewSpecialties',element:<AddNewSpecialties/>},
+      {path:'MainSpecialties/:id',element:<MainSpecialties/>},
+      {path:'AddNewSubSpecialties/:MainTitle',element:<AddNewSubSpecialties/>},
+      {path:'Certificates',element:<Certificates/>},
+      {path:'AddNewCertificate',element:<AddNewCertificate/>},
+      {path:'ShowCertificate/:id',element:<ShowCertificate/>},
+      {path:'Advisors',element:<Advisors/>},
+      {path:'AddAdvisors',element:<AddAdvisors/>},
+      {path:'ShowAdvisors/:id',element:<ShowAdvisors/>},
+      {path:'Specialist',element:<Specialist/>},
+      {path:'AddSpecialist',element:<AddSpecialist/>},
+      {path:'ShowSpecialist/:id',element:<ShowSpecialist/>},
       
 
-
       
+
       
     ]},
     {path:'',element: <Layout />,children:[
@@ -56,7 +80,7 @@ function App() {
     
   ])
   return (
-    <div className='m-0 p-0'>
+    <div className='m-0  p-0'>
     <Provider store={ConfigurationStore}>
     <RouterProvider router={router}/>
     </Provider>

@@ -6,8 +6,11 @@
     font-family: 'Cairo';
 }
 .bgImage{
-    background: url(../../Assents/Images/OurServices/Overlay.png);
+    background: url(../../Assents/Images/OurServices/Bg.svg);
+    /* background-position:  center center; */
+    background-size: cover;
     height: 90vh;
+    padding-top: 10px;
     display: flex;
     justify-content: center;
     align-items: center;

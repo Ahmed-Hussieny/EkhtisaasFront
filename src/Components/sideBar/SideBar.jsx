@@ -35,19 +35,19 @@ const Sidebar = () => {
             <NavLink exact to="/Admin/Pages" activeClassName="activeClicked">
               <CDBSidebarMenuItem > <img src={icon2} alt='icon2' className='ms-3'/> الصفحات</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/Admin/Specialties" activeClassName="activeClicked">
+            {/* <NavLink exact to="/Admin/Specialties" activeClassName="activeClicked">
               <CDBSidebarMenuItem > <img src={icon3} alt='icon3' className='ms-3'/> الإستفسارات</CDBSidebarMenuItem>
-            </NavLink>
-            <NavLink exact to="/tables" activeClassName="activeClicked">
+            </NavLink> */}
+            <NavLink exact to="/Admin/Specialties" activeClassName="activeClicked">
               <CDBSidebarMenuItem > <img src={icon4} alt='icon4' className='ms-3'/> التخصصات</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/tables" activeClassName="activeClicked">
+            <NavLink exact to="/Admin/Certificates" activeClassName="activeClicked">
               <CDBSidebarMenuItem > <img src={icon5} alt='icon5' className='ms-3'/> الشهادات</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/tables" activeClassName="activeClicked">
+            <NavLink exact to="/Admin/Advisors" activeClassName="activeClicked">
               <CDBSidebarMenuItem > <img src={icon6} alt='icon6' className='ms-3'/> المرشدين</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/tables" activeClassName="activeClicked">
+            <NavLink exact to="/Admin/Specialist" activeClassName="activeClicked">
               <CDBSidebarMenuItem > <img src={icon7} alt='icon7' className='ms-3'/> المتخصصين</CDBSidebarMenuItem>
             </NavLink>
           </CDBSidebarMenu>

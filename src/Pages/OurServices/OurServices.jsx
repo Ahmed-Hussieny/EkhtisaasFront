@@ -11,13 +11,13 @@ const OurServices = () => {
   return (
     <div className={style.font}>
         <div className={style.bgImage}>
-        <div className='w-75 px-5 text-center mb-5'>
+        <div className='w-75 px-lg-5 text-center mb-5'>
                     <p style={{fontSize:'32px',fontWeight:700}}>
                     تعتبر منصة اختصاص المنصة الأفضل في العالم العربي في تقديم الخدمات المهنية
                     </p>
                 </div>
-                <div className='w-75 px-5 text-center mb-5'>
-                    <p className='px-5' style={{color:'rgba(70, 70, 70, 1)',fontSize:'22px',fontWeight:500}}>كل ما تريده لتثري معرفتك وتتقدم في مسارك المهني في مكان واحد فقط، جمعنا لك أفضل المرشدين والمدربين لتستفيد من خبراتهم وتنطلق نحو هدفك.</p>
+                <div className='w-75 px-lg-5 text-center mb-5'>
+                    <p className='px-lg-5' style={{color:'rgba(70, 70, 70, 1)',fontSize:'22px',fontWeight:500}}>كل ما تريده لتثري معرفتك وتتقدم في مسارك المهني في مكان واحد فقط، جمعنا لك أفضل المرشدين والمدربين لتستفيد من خبراتهم وتنطلق نحو هدفك.</p>
                 </div>
     </div>
     <div className="d-flex justify-content-center mt-5">
@@ -30,11 +30,11 @@ const OurServices = () => {
               
             </div>
             {/* first */}
-            <div className='row m-0 p-0 d-flex align-items-center'>
+            <div className='row  m-0 mb-5 p-0 d-flex align-items-center'>
                     
-            <div className='col-md-6 text-center px-5'>
+            <div className='col-md-6 text-center px-lg-5'>
                 <h3 style={{color:'rgba(76, 231, 160, 1)',fontSize:'30px'}}>المسار المهني للشهادات الإحترافية</h3>
-                <p style={{color:'rgba(70, 70, 70, 1)',fontSize:'22px'}} className=' my-5 px-5'>نقدم مسار شامل لكل التخصصات يضم الشهادات الاحترافية الخاصة بها، نوفر تدريبات ومناهج ومدربين يساعدونك لتنجح في الحصول علي الشهادة.</p>
+                <p style={{color:'rgba(70, 70, 70, 1)',fontSize:'22px'}} className=' my-5 px-lg-5'>نقدم مسار شامل لكل التخصصات يضم الشهادات الاحترافية الخاصة بها، نوفر تدريبات ومناهج ومدربين يساعدونك لتنجح في الحصول علي الشهادة.</p>
                 <button className='btn text-white w-75 py-3' style={{backgroundColor:'rgba(31, 42, 68, 1)'}}>تصفح الخدمة</button>
             </div>
             <div className='col-md-6 p-0 d-none d-lg-block text-start position-relative'>
@@ -46,7 +46,7 @@ const OurServices = () => {
               </div>
               
               {/* second */}
-              <div className='row m-0 p-0 d-flex align-items-center'>
+              <div className='row mb-5 m-0 p-0 d-flex align-items-center'>
                     
               <div className='col-md-6 p-0 d-none d-lg-block text-end position-relative'>
                     <img className='' src={img12} alt='img12'/>
@@ -54,9 +54,9 @@ const OurServices = () => {
                     <img src={img22} alt='img22'/>
                     </div>
             </div>
-            <div className='col-md-6 text-center px-4'>
+            <div className='col-md-6 text-center px-lg-4'>
                 <p className='fs-4'>  <span style={{color:'rgba(76, 231, 160, 1)',fontSize:'30px'}}>الإرشاد المهني للموظفين وحديثي التخرج <br/> </span>( قريبا)</p>
-                <p style={{color:'rgba(70, 70, 70, 1)',fontSize:'22px'}} className=' my-5 px-5'> نوفر لك أفضل المرشدين المهنين أفرادَا ومنظمات ليساعدوك لتحقق أكبر نجاح ممكن في حياتك المهنية.</p>
+                <p style={{color:'rgba(70, 70, 70, 1)',fontSize:'22px'}} className=' my-5 px-lg-5'> نوفر لك أفضل المرشدين المهنين أفرادَا ومنظمات ليساعدوك لتحقق أكبر نجاح ممكن في حياتك المهنية.</p>
                 <button className='btn text-white w-75 py-3' style={{backgroundColor:'rgba(31, 42, 68, 1)'}}>تصفح الخدمة</button>
             </div>
             
@@ -65,11 +65,11 @@ const OurServices = () => {
                 {/* third */}
                 <div className='row m-0 p-0 d-flex align-items-center'>
                     
-            <div className='col-md-6 text-center px-5'>
+            <div className='col-md-6 text-center px-lg-5'>
             <p className='fs-4'>  <span style={{color:'rgba(76, 231, 160, 1)',fontSize:'30px'}}> خدمة اللينكدين والسيرة الذاتية </span>( قريبا)</p>
 
            
-                <p style={{color:'rgba(70, 70, 70, 1)',fontSize:'22px'}} className=' my-4 px-5'>نوفر لك أفضل المرشدين المهنين أفرادَا ومنظمات ليساعدوك لتحقق أكبر نجاح ممكن في حياتك المهنية.</p>
+                <p style={{color:'rgba(70, 70, 70, 1)',fontSize:'22px'}} className=' my-4 px-lg-5'>نوفر لك أفضل المرشدين المهنين أفرادَا ومنظمات ليساعدوك لتحقق أكبر نجاح ممكن في حياتك المهنية.</p>
                 <button className='btn text-white w-75 py-3' style={{backgroundColor:'rgba(31, 42, 68, 1)'}}>تصفح الخدمة</button>
             </div>
             <div className='col-md-6 p-0 d-none d-lg-block text-start position-relative'>
