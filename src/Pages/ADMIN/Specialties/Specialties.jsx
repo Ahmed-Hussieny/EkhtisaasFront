@@ -163,7 +163,7 @@ const Specialties = () => {
         {(currentDataForScientificData.length>0)?
         <>
           <div className='row m-0 gy-3 px-lg-5'>
-            {currentDataForScientificData.map((el) => (
+            {currentDataForScientificData?.map((el) => (
               <SpecialtiesComponent Type={el.Type} id={el._id} key={el.id} Img={el.Image.secure_url} TypeIcon={chemistryIcon} Title={el.Title} Desc={el.Description} />
             ))}
             
@@ -192,7 +192,7 @@ const Specialties = () => {
         {currentDataForHumanAndLiteraryData.length>0?
           <>
           <div className='row m-0 gy-3 px-lg-5'>
-            {currentDataForHumanAndLiteraryData.map((el) => (
+            {currentDataForHumanAndLiteraryData?.map((el) => (
               <SpecialtiesComponent Type={el.Type} id={el._id} key={el.id} Img={el.Image.secure_url} TypeIcon={chemistryIcon} Title={el.Title} Desc={el.Description} />
             ))}
             
@@ -219,7 +219,7 @@ const Specialties = () => {
         {currentDataForAdministrativeData.length>0?
           <>
           <div className='row m-0 gy-3 px-lg-5'>
-            {currentDataForAdministrativeData.map((el) => (
+            {currentDataForAdministrativeData?.map((el) => (
               <SpecialtiesComponent Type={el.Type} id={el._id} key={el.id} Img={el.Image.secure_url} TypeIcon={chemistryIcon} Title={el.Title} Desc={el.Description} />
             ))}
             
@@ -246,7 +246,7 @@ const Specialties = () => {
         {currentDataForHealthyData.length>0?
           <>
           <div className='row m-0 gy-3 px-lg-5'>
-            {currentDataForHealthyData.map((el) => (
+            {currentDataForHealthyData?.map((el) => (
               <SpecialtiesComponent Type={el.Type} id={el._id} key={el.id} Img={el.Image.secure_url} TypeIcon={chemistryIcon} Title={el.Title} Desc={el.Description} />
             ))}
             

@@ -31,6 +31,14 @@ import ShowAdvisors from './Pages/ADMIN/Advisors/ShowAdvisors';
 import Specialist from './Pages/ADMIN/Specialist/Specialist';
 import AddSpecialist from './Pages/ADMIN/Specialist/AddSpecialist';
 import ShowSpecialist from './Pages/ADMIN/Specialist/ShowSpecialist';
+import ProfessionalCertificationSpecialties from './Pages/professionalCertification/ProfessionalCertificationSpecialties';
+import ProfessionalCertificationSubSpecialties from './Pages/professionalCertification/ProfessionalCertificationSubSpecialties';
+import ProfessionalCertification from './Pages/professionalCertification/ProfessionalCertification';
+import CertificateDetails from './Pages/professionalCertification/CertificateDetails';
+import CareerGuidance from './Pages/CareerGuidance/CareerGuidance';
+import MentorDetails from './Pages/CareerGuidance/MentorDetails';
+import SpecialistPage from './Pages/Specialist/SpecialistPage';
+import ShowSpecialistDetails from './Pages/Specialist/ShowSpecialistDetails';
 
 function App() {
   let router = createBrowserRouter([
@@ -57,11 +65,10 @@ function App() {
       {path:'Specialist',element:<Specialist/>},
       {path:'AddSpecialist',element:<AddSpecialist/>},
       {path:'ShowSpecialist/:id',element:<ShowSpecialist/>},
-      
 
       
-
       
+
     ]},
     {path:'',element: <Layout />,children:[
       {path:'/HomePage',element:<HomePage/>},
@@ -69,7 +76,20 @@ function App() {
       {path:'/OurServices',element:<OurServices/>},
       {path:'/ContactUs',element:<ContactUs/>},
       {path:'/Search',element:<Search/>},
+      {path:'/ProfessionalCertificationSpecialties',element:<ProfessionalCertificationSpecialties/>},
+      {path:'/ProfessionalCertificationSubSpecialties/:id',element:<ProfessionalCertificationSubSpecialties/>},
+      {path:'/professionalCertifications/:id',element:<ProfessionalCertification/>},
+      {path:'/CertificateDetails/:id',element:<CertificateDetails/>},
+      {path:'/CareerGuidance',element:<CareerGuidance/>},
+      {path:'/MentorDetails/:id',element:<MentorDetails/>},
+      {path:'/SpecialistPage',element:<SpecialistPage/>},
+      {path:'/ShowSpecialistDetails/:id',element:<ShowSpecialistDetails/>},
+      
 
+      
+      
+      
+      
 
       
       

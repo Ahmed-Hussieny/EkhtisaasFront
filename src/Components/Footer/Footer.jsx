@@ -7,7 +7,7 @@ import linkedInlogo from '../../Assents/Images/footer/Linkedin.svg'
 const Footer = () => {
   return (
     <>
-      <div className={[style.footerContainer ,style.font,"mt-5  pt-3"].join(" ")}>
+      <div className={[style.footerContainer ,style.font,"  pt-3"].join(" ")}>
       <div className='container px-5 '>
         <div className='row  m-0 d-flex align-items-center gy-3'>
             <div className='col-md-5'>

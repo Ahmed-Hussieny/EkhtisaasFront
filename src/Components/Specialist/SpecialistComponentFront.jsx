@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
-const SpecialistComponent = ({ id, Image, Name,Category}) => {
+const SpecialistComponentFront = ({ id, Image, Name,Category}) => {
   const navigate = useNavigate();
   const getBorderColor = (Category) => {
     if (Category === "تصنيف A") return "rgba(0, 175, 80, 1)";
@@ -12,7 +12,7 @@ const SpecialistComponent = ({ id, Image, Name,Category}) => {
   return (
     // 
     <div className='col-md-4 ' >
-      <div className='rounded-3 position-relative' onClick={() => navigate(`/Admin/ShowSpecialist/${id}`)} >
+      <div className='rounded-3 position-relative' onClick={() => navigate(`/ShowSpecialistDetails/${id}`)} >
         <img src={Image} alt={`${Name}`} className='rounded-3 w-100' />
         <div style={{position:'absolute',top:0,left:0}}>
         <div  style={{backgroundColor:getBorderColor(Category),borderTopLeftRadius:'15px',borderBottomRightRadius:'15px'}}>
@@ -29,4 +29,4 @@ const SpecialistComponent = ({ id, Image, Name,Category}) => {
   );
 };
 
-export default SpecialistComponent;
+export default SpecialistComponentFront;

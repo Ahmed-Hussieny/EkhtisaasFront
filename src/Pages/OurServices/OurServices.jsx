@@ -7,7 +7,9 @@ import img12 from '../../Assents/Images/OurServices/Circle Stroke 2.png'
 import img22 from '../../Assents/Images/OurServices/bro.svg'
 import img13 from '../../Assents/Images/OurServices/Circle Stroke 3.png'
 import img23 from '../../Assents/Images/OurServices/bro2.svg'
+import { useNavigate } from 'react-router-dom'
 const OurServices = () => {
+  const navigate = useNavigate()
   return (
     <div className={style.font}>
         <div className={style.bgImage}>
@@ -35,7 +37,7 @@ const OurServices = () => {
             <div className='col-md-6 text-center px-lg-5'>
                 <h3 style={{color:'rgba(76, 231, 160, 1)',fontSize:'30px'}}>المسار المهني للشهادات الإحترافية</h3>
                 <p style={{color:'rgba(70, 70, 70, 1)',fontSize:'22px'}} className=' my-5 px-lg-5'>نقدم مسار شامل لكل التخصصات يضم الشهادات الاحترافية الخاصة بها، نوفر تدريبات ومناهج ومدربين يساعدونك لتنجح في الحصول علي الشهادة.</p>
-                <button className='btn text-white w-75 py-3' style={{backgroundColor:'rgba(31, 42, 68, 1)'}}>تصفح الخدمة</button>
+                <button onClick={()=>navigate('/ProfessionalCertificationSpecialties')} className='btn text-white w-75 py-3' style={{backgroundColor:'rgba(31, 42, 68, 1)'}}>تصفح الخدمة</button>
             </div>
             <div className='col-md-6 p-0 d-none d-lg-block text-start position-relative'>
                     <img className='' src={img1} alt='img1'/>
@@ -55,9 +57,9 @@ const OurServices = () => {
                     </div>
             </div>
             <div className='col-md-6 text-center px-lg-4'>
-                <p className='fs-4'>  <span style={{color:'rgba(76, 231, 160, 1)',fontSize:'30px'}}>الإرشاد المهني للموظفين وحديثي التخرج <br/> </span>( قريبا)</p>
+                <p className='fs-4'>  <span style={{color:'rgba(76, 231, 160, 1)',fontSize:'30px'}}>الإرشاد المهني للموظفين وحديثي التخرج <br/> </span></p>
                 <p style={{color:'rgba(70, 70, 70, 1)',fontSize:'22px'}} className=' my-5 px-lg-5'> نوفر لك أفضل المرشدين المهنين أفرادَا ومنظمات ليساعدوك لتحقق أكبر نجاح ممكن في حياتك المهنية.</p>
-                <button className='btn text-white w-75 py-3' style={{backgroundColor:'rgba(31, 42, 68, 1)'}}>تصفح الخدمة</button>
+                <button onClick={()=>navigate('/CareerGuidance')}  className='btn text-white w-75 py-3' style={{backgroundColor:'rgba(31, 42, 68, 1)'}}>تصفح الخدمة</button>
             </div>
             
               </div>
@@ -66,11 +68,11 @@ const OurServices = () => {
                 <div className='row m-0 p-0 d-flex align-items-center'>
                     
             <div className='col-md-6 text-center px-lg-5'>
-            <p className='fs-4'>  <span style={{color:'rgba(76, 231, 160, 1)',fontSize:'30px'}}> خدمة اللينكدين والسيرة الذاتية </span>( قريبا)</p>
+            <p className='fs-4'>  <span style={{color:'rgba(76, 231, 160, 1)',fontSize:'30px'}}> خدمة اللينكدين والسيرة الذاتية </span></p>
 
            
                 <p style={{color:'rgba(70, 70, 70, 1)',fontSize:'22px'}} className=' my-4 px-lg-5'>نوفر لك أفضل المرشدين المهنين أفرادَا ومنظمات ليساعدوك لتحقق أكبر نجاح ممكن في حياتك المهنية.</p>
-                <button className='btn text-white w-75 py-3' style={{backgroundColor:'rgba(31, 42, 68, 1)'}}>تصفح الخدمة</button>
+                <button onClick={()=>navigate('/SpecialistPage')} className='btn text-white w-75 py-3' style={{backgroundColor:'rgba(31, 42, 68, 1)'}}>تصفح الخدمة</button>
             </div>
             <div className='col-md-6 p-0 d-none d-lg-block text-start position-relative'>
                     <img className='' src={img13} alt='img1'/>

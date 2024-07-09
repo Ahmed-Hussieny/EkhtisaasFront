@@ -1,0 +1,67 @@
+@font-face {
+    font-family: Cairo;
+    src: url(/src/Assents/Fonts/Cairo-VariableFont_slnt\,wght.ttf);
+}
+.font{
+    font-family: 'Cairo';
+}
+
+.bgImage{
+    background: url("../Images/ProfessionalCertification/Rectangle 15.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.bgImage2{
+    background: url("../Images/ProfessionalCertification/Rectangle\ 2689.svg");
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+
+.bgImage3{
+    background: url("../Images/ProfessionalCertification/Shape.png");
+    background-position: top center;
+    background-repeat: no-repeat;
+    width: 100%;
+}
+.bgImage4{
+    background: url("../Images/ProfessionalCertification/Background (1).png");
+    background-position: top center;
+    background-repeat: no-repeat;
+    width: 100%;
+}
+
+
+@media (max-width: 768px) {
+    .tabContainer {
+      display: none;
+    }
+    .dropdownContainer {
+      display: block;
+    }
+  }
+  
+  @media (min-width: 769px) {
+    .tabContainer {
+      display: flex;
+    }
+    .dropdownContainer {
+      display: none;
+    }
+  }
+  
+  .tabContent {
+    display: none;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-top: none;
+  }
+  
+  .tabContent.active {
+    display: block;
+  }
+  
+  .activetab{
+    background-color: rgba(31, 42, 68, 1);
+    color: #fff;
+  }
