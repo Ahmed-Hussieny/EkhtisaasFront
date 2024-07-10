@@ -58,16 +58,17 @@ const AddSpecialist = () => {
       experienceDescription: Yup.string().required("هذا الحقل مطلوب"),
       Services: Yup.string().required("هذا الحقل مطلوب"),
       PriceOfServices: Yup.string().required("هذا الحقل مطلوب"),
-      email: Yup.string().required("هذا الحقل مطلوب"),
-      linkedIn: Yup.string().url("Invalid URL").required("هذا الحقل مطلوب"),
-      X: Yup.string().url("Invalid URL").required("هذا الحقل مطلوب"),
-      website: Yup.string().url("Invalid URL").required("هذا الحقل مطلوب"),
+      email: Yup.string(),
+      linkedIn: Yup.string().url("Invalid URL"),
+      X: Yup.string().url("Invalid URL"),
+      website: Yup.string().url("Invalid URL"),
       Rate: Yup.number().required("هذا الحقل مطلوب"),
       Category:Yup.string().required("هذا الحقل مطلوب"),
     }),
     onSubmit: AddSpecialist,
   });
   async function AddSpecialist(val) {
+    setloding(true)
     console.log(val);
     const formdata = new FormData()
     formdata.append("name",formik.values.name)
@@ -90,6 +91,7 @@ const AddSpecialist = () => {
         }else{
             toast.error(res.payload.data.message)
         }
+        setloding(false)
   }
   const dispatch = useDispatch();
   // Image One
@@ -533,7 +535,7 @@ const AddSpecialist = () => {
                                     <i className="fa-solid fa-spinner fa-spin"></i>
                                                 </button>
                                 ):(
-                                      <button  onClick={formik.handleSubmit} type="submit" className='btn text-white rounded-2 py-3 mt-1 w-100' style={{ backgroundColor: 'rgba(31, 42, 68, 1)' }}>
+                                      <button disabled={loading} onClick={formik.handleSubmit} type="submit" className='btn text-white rounded-2 py-3 mt-1 w-100' style={{ backgroundColor: 'rgba(31, 42, 68, 1)' }}>
                                       إضافة متخصص      
                                             </button>
                                 )}

@@ -65,6 +65,7 @@ const AddAdvisors = () => {
     onSubmit: AddCertificate,
   });
   async function AddCertificate(val) {
+    setloding(true)
     console.log(val);
     const formdata = new FormData()
     formdata.append("name",formik.values.name)
@@ -86,6 +87,8 @@ const AddAdvisors = () => {
         }else{
             toast.error(res.payload.data.message)
         }
+        setloding(true)
+
   }
   const dispatch = useDispatch();
   // Image One
@@ -493,7 +496,7 @@ const AddAdvisors = () => {
                                     <i className="fa-solid fa-spinner fa-spin"></i>
                                                 </button>
                                 ):(
-                                      <button  onClick={formik.handleSubmit} type="submit" className='btn text-white rounded-2 py-3 mt-1 w-100' style={{ backgroundColor: 'rgba(31, 42, 68, 1)' }}>
+                                      <button  disabled={loading} onClick={formik.handleSubmit} type="submit" className='btn text-white rounded-2 py-3 mt-1 w-100' style={{ backgroundColor: 'rgba(31, 42, 68, 1)' }}>
                                 إضافة مرشد جديد
             </button>
                                 )}
