@@ -188,7 +188,7 @@ const ContactUs = () => {
                       </div>
                       </a>
                     </li>
-                    <li onClick={() => openEmail(pageData.Email, 'Hello!', 'I wanted to reach out and say hello.')} className=' d-flex justify-content-center align-items-center'>
+                    <li onClick={() => openEmail(pageData.Email, 'Hello!', 'I wanted to reach out and say hello.')} className=' d-flex  align-items-center'>
 
                       <div >
                         <img src={icon4} alt="Email" />
