@@ -96,12 +96,12 @@ export const HandelGetSingleAdvisor = createAsyncThunk(
       try {
         const response = await axios.get(
           `${process.env.REACT_APP_BASE_URL}/Advisor/GetSingleAdvisor/${id}`
-          // ,
-          // {
-          //   headers: {
-          //     accessToken: "prefixToken_" + localStorage.getItem("Token"),
-          //   },
-          // }
+          ,
+          {
+            headers: {
+              accessToken: "prefixToken_" + localStorage.getItem("Token"),
+            },
+          }
         );
   
         return response.data;

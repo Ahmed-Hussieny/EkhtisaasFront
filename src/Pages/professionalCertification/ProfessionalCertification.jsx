@@ -110,7 +110,7 @@ const ProfessionalCertification = () => {
           <>
             <div className='row m-0 gy-3 px-lg-5'>
               {currentCertificateData.map((el) => (
-                <ProfessionalCertificationComponent Level={el.Level} Type={el.Type} id={el._id} key={el._id} Image={el.certificateImage.secure_url}  Title={el.Title} Description={el.Description} />
+                <ProfessionalCertificationComponent Level={el.Level} Type={el.Type} id={el._id} key={el._id} Image={el.certificateImage.secure_url}  Title={el.certificateName} Description={el.Description} />
               ))}
             </div>
             <div className='d-flex justify-content-center my-5'>

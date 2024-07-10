@@ -214,9 +214,9 @@ const ProfessionalCertificationSpecialties = () => {
         {currentDataForHumanAndLiteraryData.length>0?
           <>
           <div className='row m-0 gy-3 px-lg-5'>
-            {/* {currentDataForHumanAndLiteraryData?.map((el) => (
-              <SpecialtiesComponent Type={el.Type} id={el._id} key={el.id} Img={el.Image.secure_url} TypeIcon={chemistryIcon} Title={el.Title} Desc={el.Description} />
-            ))} */}
+            {currentDataForHumanAndLiteraryData?.map((el) => (
+              <ProfessionalSpecialties Type={el.Type} id={el._id} key={el.id} Img={el.Image.secure_url} Title={el.Title} Desc={el.Description} />
+            ))}
             
           </div>
           <div className='d-flex justify-content-center my-5'>
@@ -241,9 +241,9 @@ const ProfessionalCertificationSpecialties = () => {
         {currentDataForAdministrativeData.length>0?
           <>
           <div className='row m-0 gy-3 px-lg-5'>
-            {/* {currentDataForAdministrativeData?.map((el) => (
-              <SpecialtiesComponent Type={el.Type} id={el._id} key={el.id} Img={el.Image.secure_url} TypeIcon={chemistryIcon} Title={el.Title} Desc={el.Description} />
-            ))} */}
+            {currentDataForAdministrativeData?.map((el) => (
+              <ProfessionalSpecialties Type={el.Type} id={el._id} key={el.id} Img={el.Image.secure_url} Title={el.Title} Desc={el.Description} />
+            ))}
             
           </div>
           <div className='d-flex justify-content-center my-5'>
@@ -268,9 +268,9 @@ const ProfessionalCertificationSpecialties = () => {
         {currentDataForHealthyData.length>0?
           <>
           <div className='row m-0 gy-3 px-lg-5'>
-            {/* {currentDataForHealthyData?.map((el) => (
-              <SpecialtiesComponent Type={el.Type} id={el._id} key={el.id} Img={el.Image.secure_url} TypeIcon={chemistryIcon} Title={el.Title} Desc={el.Description} />
-            ))} */}
+            {currentDataForHealthyData?.map((el) => (
+              <ProfessionalSpecialties Type={el.Type} id={el._id} key={el.id} Img={el.Image.secure_url} Title={el.Title} Desc={el.Description} />
+            ))}
             
           </div>
           <div className='d-flex justify-content-center my-5'>

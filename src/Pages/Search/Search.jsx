@@ -12,31 +12,32 @@ import ProfessionalSpecialties from "../../Components/ProfessionalCertification/
 import ProfessionalCertificationComponent from "../../Components/ProfessionalCertification/ProfessionalCertificationComponent";
 
 const Search = () => {
-  const [Data, setData] = useState([]);
-  const [searchInput, setSearchInput] = useState('');
   const [Data1, setData1] = useState([]);
   const [Data2, setData2] = useState([]);
   const [Data3, setData3] = useState([]);
+  const [searchInput, setSearchInput] = useState('');
   const [filteredData1, setFilteredData1] = useState([]);
   const [filteredData2, setFilteredData2] = useState([]);
   const [filteredData3, setFilteredData3] = useState([]);
 
-  const dispatch = useDispatch()
-  const GetAllData = async()=>{
-    const res1 = await dispatch(HandelGetAllMainSpecialty())
-    setData1(res1.payload.data)
-    console.log(res1.payload.data);
-    const res2 = await dispatch(HandelGetAllSubSpecialty())
-    setData2(res2.payload.data)
-    console.log(res2.payload.data);
-    const res3 = await dispatch(HandelGetAllCertificate())
-    setData3(res3.payload.data)
-    console.log(res3.payload.data);
+  const dispatch = useDispatch();
 
-  }
+  const GetAllData = async () => {
+    const res1 = await dispatch(HandelGetAllMainSpecialty());
+    setData1(res1.payload.data);
+    const res2 = await dispatch(HandelGetAllSubSpecialty());
+    setData2(res2.payload.data);
+    const res3 = await dispatch(HandelGetAllCertificate());
+    setData3(res3.payload.data);
+  };
+
   const handleInputChange = (e) => {
     const value = e.target.value;
     setSearchInput(value);
+    filterData(value);
+  };
+
+  const filterData = (value) => {
     // For Main
     const filtered1 = Data1.filter(item => 
       item.Title.toLowerCase().includes(value.toLowerCase())
@@ -52,14 +53,15 @@ const Search = () => {
       item.certificateName.toLowerCase().includes(value.toLowerCase())
     );
     setFilteredData3(filtered3);
-    console.log(filtered3);
   };
-  useEffect(()=>{
-    GetAllData()
-  },[])
+
+  useEffect(() => {
+    GetAllData();
+  }, []);
+
   return (
     <div className={style.font}>
-      <div className="container  m-auto row mt-5">
+      <div className="container m-auto row mt-5">
         <div className="col-md-10">
           <div
             style={{ backgroundColor: "rgba(247, 247, 247, 1)" }}
@@ -77,15 +79,14 @@ const Search = () => {
               type="text"
               className={[style.input, "form-control border-0"].join(" ")}
               placeholder="ابحث عن ما تريده هنا"
-              
-               onKeyUp={handleInputChange} 
+              value={searchInput}
+              onChange={handleInputChange}
             />
           </div>
         </div>
         <div className="col-md-2">
           <button
-          onClick={handleInputChange}
-            className="btn text-white w-100 rounded-4 mt-1  py-3"
+            className="btn text-white w-100 rounded-4 mt-1 py-3"
             style={{ backgroundColor: "rgba(31, 42, 68, 1)" }}
           >
             بحث
@@ -93,28 +94,49 @@ const Search = () => {
         </div>
       </div>
       <div className="container mt-5">
-        {filteredData1.length+filteredData3.length+filteredData2.length > 0 ? (
+        {searchInput.length > 0 && ( // Only render if searchInput has a length greater than 0
           <div className="row">
             {filteredData1.map((el) => (
-              <ProfessionalSpecialties Type={el.Type} id={el._id} key={el.id} Img={el.Image.secure_url} Title={el.Title} Desc={el.Description} />
-
-              ))}
-          {filteredData2.map((el) => (
-                <ProfessionalSubSpecialties MainTitle={el.MainTitle} Type={el.Type} id={el._id} key={el._id} Img={el.Image.secure_url}  Title={el.Title} Desc={el.Description} />
-              ))}
-              {filteredData3.map((el) => (
-                <ProfessionalCertificationComponent Level={el.Level} Type={el.Type} id={el._id} key={el._id} Image={el.certificateImage.secure_url}  Title={el.Title} Description={el.Description} />
-              ))}
+              <ProfessionalSpecialties
+                Type={el.Type}
+                id={el._id}
+                key={el.id}
+                Img={el.Image.secure_url}
+                Title={el.Title}
+                Desc={el.Description}
+              />
+            ))}
+            {filteredData2.map((el) => (
+              <ProfessionalSubSpecialties
+                MainTitle={el.MainTitle}
+                Type={el.Type}
+                id={el._id}
+                key={el._id}
+                Img={el.Image.secure_url}
+                Title={el.Title}
+                Desc={el.Description}
+              />
+            ))}
+            {filteredData3.map((el) => (
+              <ProfessionalCertificationComponent
+                Level={el.Level}
+                Type={el.Type}
+                id={el._id}
+                key={el._id}
+                Image={el.certificateImage.secure_url}
+                Title={el.Title}
+                Description={el.Description}
+              />
+            ))}
           </div>
-        ) : (
-          <>
-            <div className="text-center">
-              <img className="w-50" src={EmptyData} alt="EmptyData" />
-              <p className="my-5" style={{ fontSize: "22px" }}>
-                للأسف لم نجد نتيجة لبحثك، ابحث مرة اخري بكلمات واضحة.
-              </p>
-            </div>
-          </>
+        )}
+        {searchInput.length === 0 && ( // Render when searchInput is empty
+          <div className="text-center">
+            <img className="w-50" src={EmptyData} alt="EmptyData" />
+            <p className="my-5" style={{ fontSize: "22px" }}>
+              للأسف لم نجد نتيجة لبحثك، ابحث مرة اخرى بكلمات واضحة.
+            </p>
+          </div>
         )}
       </div>
     </div>
