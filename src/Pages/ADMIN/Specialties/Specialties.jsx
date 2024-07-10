@@ -134,10 +134,11 @@ const Specialties = () => {
             onChange={handleSelectChange}
             aria-label="wrapped label select example"
           >
-            <MenuItem value="one" style={{ fontSize: '22px' }}>علمي</MenuItem>
-            <MenuItem value="two" style={{ fontSize: '22px' }}>إنساني وأدبي</MenuItem>
-            <MenuItem value="three" style={{ fontSize: '22px' }}>إداري</MenuItem>
-            <MenuItem value="four" style={{ fontSize: '22px' }}>صحي</MenuItem>
+            <MenuItem value="one" className={[style.font,""].join(' ')}
+ style={{ fontSize: '22px' }}>علمي</MenuItem>
+            <MenuItem value="two" className={[style.font,""].join(' ')} style={{ fontSize: '22px' }}>إنساني وأدبي</MenuItem>
+            <MenuItem value="three" className={[style.font,""].join(' ')} style={{ fontSize: '22px' }}>إداري</MenuItem>
+            <MenuItem value="four" className={[style.font,""].join(' ')} style={{ fontSize: '22px' }}>صحي</MenuItem>
           </Select>
         ) : (
           <Tabs

@@ -43,12 +43,12 @@ import ContactWithUs from './Pages/ADMIN/ContactWithUs/ContactWithUs';
 
 function App() {
   let router = createBrowserRouter([
-    {path:'/',element:<Login/>},
-    {path:'/signUp',element:<Register/>},
-    {path:'/VerifyEmail/:userToken',element:<VerifyEmail/>},
-    {path:'/ForgetPassword',element:<ForgetPassword/>},
-    {path:'/OTP',element:<OTP/>},
-    {path:'/ResetPassword',element:<ResetPassword/>},
+    // {path:'/',element:<Login/>},
+    // {path:'/signUp',element:<Register/>},
+    // {path:'/VerifyEmail/:userToken',element:<VerifyEmail/>},
+    // {path:'/ForgetPassword',element:<ForgetPassword/>},
+    // {path:'/OTP',element:<OTP/>},
+    // {path:'/ResetPassword',element:<ResetPassword/>},
     {path:'/Admin',element:<LoginAdmin/>},
     {path:'/Admin',element: <LayoutAdmin />,children:[
       {path:'AdminHomePage',element:<AdminHomePage/>},
@@ -74,7 +74,7 @@ function App() {
 
     ]},
     {path:'',element: <Layout />,children:[
-      {path:'/HomePage',element:<HomePage/>},
+      {path:'/',element:<HomePage/>},
       {path:'/AboutUs',element:<AboutUs/>},
       {path:'/OurServices',element:<OurServices/>},
       {path:'/ContactUs',element:<ContactUs/>},

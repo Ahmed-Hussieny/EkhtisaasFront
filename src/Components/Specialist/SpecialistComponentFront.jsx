@@ -13,7 +13,7 @@ const SpecialistComponentFront = ({ id, Image, Name,Category}) => {
     // 
     <div className='col-md-4 ' >
       <div className='rounded-3 position-relative' onClick={() => navigate(`/ShowSpecialistDetails/${id}`)} >
-        <img src={Image} alt={`${Name}`} className='rounded-3 w-100' />
+        <img style={{height:'200px'}} src={Image} alt={`${Name}`} className='rounded-3 w-100' />
         <div style={{position:'absolute',top:0,left:0}}>
         <div  style={{backgroundColor:getBorderColor(Category),borderTopLeftRadius:'15px',borderBottomRightRadius:'15px'}}>
         <p style={{fontSize:'15px'}} className='px-4 text-white py-1'>{Category}</p>

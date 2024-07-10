@@ -122,12 +122,13 @@ export const HandelGetCountOfVisitors = createAsyncThunk(
   async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/user/CountOfVisitors`,
-        {
-          headers: {
-            accessToken: "prefixToken_" + localStorage.getItem("Token"),
-          },
-        }
+        `${process.env.REACT_APP_BASE_URL}/user/CountOfVisitors`
+        // ,
+        // {
+        //   headers: {
+        //     accessToken: "prefixToken_" + localStorage.getItem("Token"),
+        //   },
+        // }
       );
 
       return response.data;
@@ -143,12 +144,13 @@ export const HandelPutCountOfVisitors = createAsyncThunk(
   async (id) => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/user/CountOfVisitorsForsingle/${id}`,
-        {
-          headers: {
-            accessToken: "prefixToken_" + localStorage.getItem("Token"),
-          },
-        }
+        `${process.env.REACT_APP_BASE_URL}/user/CountOfVisitorsForsingle/${id}`
+        // ,
+        // {
+        //   headers: {
+        //     accessToken: "prefixToken_" + localStorage.getItem("Token"),
+        //   },
+        // }
       );
 
       return response.data;

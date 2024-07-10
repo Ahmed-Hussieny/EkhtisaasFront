@@ -60,7 +60,7 @@ const AddAdvisors = () => {
       linkedIn: Yup.string().url("Invalid URL"),
       X: Yup.string().url("Invalid URL"),
       website: Yup.string().url("Invalid URL"),
-      Rate: Yup.number().required("هذا الحقل مطلوب"),
+      Rate: Yup.number(),
     }),
     onSubmit: AddCertificate,
   });

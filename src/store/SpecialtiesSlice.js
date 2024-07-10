@@ -72,12 +72,13 @@ export const HandelGetSingleMainSpecialty = createAsyncThunk(
   async (id) => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/MainSpecialty/GetSingleMainSpecialty/${id}`,
-        {
-          headers: {
-            accesstoken: "prefixToken_" + localStorage.getItem("Token"),
-          },
-        }
+        `${process.env.REACT_APP_BASE_URL}/MainSpecialty/GetSingleMainSpecialty/${id}`
+        // ,
+        // {
+        //   headers: {
+        //     accesstoken: "prefixToken_" + localStorage.getItem("Token"),
+        //   },
+        // }
       );
 
       return response.data;
@@ -93,12 +94,13 @@ export const HandelGetAllMainSpecialty = createAsyncThunk(
   async () => {
     try {
       const response = await axios.get(
-       `${process.env.REACT_APP_BASE_URL}/MainSpecialty/GetAllMainSpecialties`,
-        {
-          headers: {
-            accesstoken: "prefixToken_" + localStorage.getItem("Token"),
-          },
-        }
+       `${process.env.REACT_APP_BASE_URL}/MainSpecialty/GetAllMainSpecialties`
+      //  ,
+      //   {
+      //     headers: {
+      //       accesstoken: "prefixToken_" + localStorage.getItem("Token"),
+      //     },
+      //   }
       );
 
       return response.data;
@@ -182,12 +184,13 @@ export const HandelGetAllSubSpecialty = createAsyncThunk(
   async () => {
     try {
       const response = await axios.get(
-       `${process.env.REACT_APP_BASE_URL}/SubSpecialty/GetAllSubSpecialties`,
-        {
-          headers: {
-            accesstoken: "prefixToken_" + localStorage.getItem("Token"),
-          },
-        }
+       `${process.env.REACT_APP_BASE_URL}/SubSpecialty/GetAllSubSpecialties`
+      //  ,
+      //   {
+      //     headers: {
+      //       accesstoken: "prefixToken_" + localStorage.getItem("Token"),
+      //     },
+      //   }
       );
 
       return response.data;
@@ -203,12 +206,13 @@ export const HandelGetSingleSubSpecialty = createAsyncThunk(
   async (id) => {
     try {
       const response = await axios.get(
-       `${process.env.REACT_APP_BASE_URL}/SubSpecialty/GetSingleSubSpecialty/${id}`,
-        {
-          headers: {
-            accesstoken: "prefixToken_" + localStorage.getItem("Token"),
-          },
-        }
+       `${process.env.REACT_APP_BASE_URL}/SubSpecialty/GetSingleSubSpecialty/${id}`
+      //  ,
+      //   {
+      //     headers: {
+      //       accesstoken: "prefixToken_" + localStorage.getItem("Token"),
+      //     },
+      //   }
       );
 
       return response.data;

@@ -30,7 +30,7 @@ const Navbar = () => {
             <ul className="navbar-nav w-100 justify-content-between">
               <li className={["nav-item"].join(" ")}>
                 <NavLink                   activeClassName={style.activeNavLink}
- className={["nav-link"].join(" ")} to="/HomePage">
+ className={["nav-link"].join(" ")} to="/">
                   الرئيسية
                 </NavLink>
               </li>

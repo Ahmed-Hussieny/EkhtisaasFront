@@ -27,7 +27,7 @@ const ProfessionalSubSpecialties = ({Type,TypeIcon,id,Img,Title,Desc}) => {
   return (
     <div className='col-md-4 '>
     <div onClick={()=>navigate(`/professionalCertifications/${id}`)} className='rounded-4  d-flex align-items-center  text-center position-relative ' style={{height:'250px',backgroundColor:'rgba(247, 247, 247, 1)'}}>
-        <div className='' ><img  src={Img} className='m-auto w-75'   alt='img1'/></div>
+        <div className='m-auto' ><img style={{height:'200px'}}  src={Img} className='m-auto w-75'   alt='img1'/></div>
        
     </div>
     <div className='ps-4 d-flex align-items-center mt-2 justify-content-center'>

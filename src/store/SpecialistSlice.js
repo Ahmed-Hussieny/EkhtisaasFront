@@ -73,12 +73,13 @@ export const HandelGetAllSpecialists = createAsyncThunk(
     async () => {
       try {
         const response = await axios.get(
-         `${process.env.REACT_APP_BASE_URL}/Specialist/GetAllSpecialists`,
-          {
-            headers: {
-              accessToken: "prefixToken_" + localStorage.getItem("Token"),
-            },
-          }
+         `${process.env.REACT_APP_BASE_URL}/Specialist/GetAllSpecialists`
+        //  ,
+        //   {
+        //     headers: {
+        //       accessToken: "prefixToken_" + localStorage.getItem("Token"),
+        //     },
+        //   }
         );
   
         return response.data;
@@ -94,12 +95,13 @@ export const HandelGetSingleSpecialist = createAsyncThunk(
     async (id) => {
       try {
         const response = await axios.get(
-         `${process.env.REACT_APP_BASE_URL}/Specialist/GetSingleSpecialist/${id}`,
-          {
-            headers: {
-              accessToken: "prefixToken_" + localStorage.getItem("Token"),
-            },
-          }
+         `${process.env.REACT_APP_BASE_URL}/Specialist/GetSingleSpecialist/${id}`
+        //  ,
+        //   {
+        //     headers: {
+        //       accessToken: "prefixToken_" + localStorage.getItem("Token"),
+        //     },
+        //   }
         );
   
         return response.data;

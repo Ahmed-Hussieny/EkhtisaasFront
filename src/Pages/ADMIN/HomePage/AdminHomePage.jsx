@@ -30,23 +30,49 @@ const AdminHomePage = () => {
     setOrganizationCount(uniqueOrganizations.size);
   };
   
-  const GetCountOfVisitors = async ()=>{
-    const res = await dispatch(HandelGetCountOfVisitors())
-    console.log(res.payload);
-    setPageData(res.payload.data)
-    console.log(pageData);
-    const res1 = await dispatch(HandelGetAllCertificate())
-      console.log(res1.payload);
-      countOrganizations(res1.payload.data)
-      const res2 = await dispatch(HandelGetAllMainSpecialty())
-      const res3 = await dispatch(HandelGetAllSubSpecialty())
-      const MainCount = res2.payload.data.length + res3.payload.data.length
-      setNumberOfMainSpeciality(MainCount)
-    setCountOfVisitors(res.payload.data.countOfVisitors)
-    const res4 = await dispatch(HandelGetAllAdvisors())
-    const res5 = await dispatch(HandelGetAllSpecialists())
-    setNumberOfPages(21+(res3.payload.data.length)?res3.payload.data.length:0 + numberOfMainSpeciality+(res1.payload.data.length)?res1.payload.data.length:0,(res4.payload.data.length)?res4.payload.data.length:0+(res5.payload.data.length)?res5.payload.data.length:0)
-  }
+  const GetCountOfVisitors = async () => {
+    try {
+        // Get the count of visitors
+        const resVisitors = await dispatch(HandelGetCountOfVisitors());
+        const visitorsData = resVisitors.payload.data;
+        console.log(visitorsData);
+        setPageData(visitorsData);
+        
+        // Get all certificates
+        const resCertificates = await dispatch(HandelGetAllCertificate());
+        const certificatesData = resCertificates.payload.data;
+        console.log(certificatesData);
+        countOrganizations(certificatesData);
+        
+        // Get main and sub specialties
+        const [resMainSpecialty, resSubSpecialty] = await Promise.all([
+            dispatch(HandelGetAllMainSpecialty()),
+            dispatch(HandelGetAllSubSpecialty())
+        ]);
+        const mainSpecialtyCount = resMainSpecialty.payload.data.length;
+        const subSpecialtyCount = resSubSpecialty.payload.data.length;
+        const totalSpecialtyCount = mainSpecialtyCount + subSpecialtyCount;
+        setNumberOfMainSpeciality(totalSpecialtyCount);
+        
+        // Update count of visitors
+        setCountOfVisitors(visitorsData.countOfVisitors);
+        
+        // Get all advisors and specialists
+        const [resAdvisors, resSpecialists] = await Promise.all([
+            dispatch(HandelGetAllAdvisors()),
+            dispatch(HandelGetAllSpecialists())
+        ]);
+        const advisorsCount = resAdvisors.payload.data.length;
+        const specialistsCount = resSpecialists.payload.data.length;
+        
+        // Calculate the number of pages
+        const numberOfPages =21+ totalSpecialtyCount + certificatesData.length + advisorsCount + specialistsCount;
+        setNumberOfPages(numberOfPages);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+};
+
   useEffect(()=>{
     GetCountOfVisitors()
   },[])

@@ -268,12 +268,13 @@ export const HandelGetSingleCertificate = createAsyncThunk(
   async (id) => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/Certificate/GetSinglecertificate/${id}`,
-        {
-          headers: {
-            accessToken: "prefixToken_" + localStorage.getItem("Token"),
-          },
-        }
+        `${process.env.REACT_APP_BASE_URL}/Certificate/GetSinglecertificate/${id}`
+        // ,
+        // {
+        //   headers: {
+        //     accessToken: "prefixToken_" + localStorage.getItem("Token"),
+        //   },
+        // }
       );
 
       return response.data;
@@ -289,12 +290,13 @@ export const HandelGetAllCertificate = createAsyncThunk(
   async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/Certificate/GetAllCertificates`,
-        {
-          headers: {
-            accessToken: "prefixToken_" + localStorage.getItem("Token"),
-          },
-        }
+        `${process.env.REACT_APP_BASE_URL}/Certificate/GetAllCertificates`
+        // ,
+        // {
+        //   headers: {
+        //     accessToken: "prefixToken_" + localStorage.getItem("Token"),
+        //   },
+        // }
       );
 
       return response.data;

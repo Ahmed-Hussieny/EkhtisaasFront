@@ -62,7 +62,7 @@ const AddSpecialist = () => {
       linkedIn: Yup.string().url("Invalid URL"),
       X: Yup.string().url("Invalid URL"),
       website: Yup.string().url("Invalid URL"),
-      Rate: Yup.number().required("هذا الحقل مطلوب"),
+      Rate: Yup.number(),
       Category:Yup.string().required("هذا الحقل مطلوب"),
     }),
     onSubmit: AddSpecialist,

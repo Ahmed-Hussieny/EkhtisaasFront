@@ -43,6 +43,7 @@ const LoginAdmin = () => {
     }
     if(!(res.payload.data.status)){
       setErrorMessage(res.payload.data.errMsg)
+      navigate('/')
       // setErrorMessage(res.payload.data.message)
     }
   }

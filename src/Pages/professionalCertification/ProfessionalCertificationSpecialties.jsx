@@ -154,25 +154,25 @@ const ProfessionalCertificationSpecialties = () => {
               color='rgba(101, 101, 101, 1)'
               label="علمي"
               wrapped
-              className='border-bottom border-2 me-4'
+              className={[style.font,"border-bottom border-2 me-4 "].join(' ')}
               style={{ fontSize: '22px' }}
             />
             <Tab
               value="two"
               label="إنساني وأدبي"
-              className='border-bottom border-2 me-4'
+              className={[style.font,"border-bottom border-2 me-4 "].join(' ')}
               style={{ fontSize: '22px' }}
             />
             <Tab
               value="three"
               label="إداري"
-              className='border-bottom border-2 me-4'
+              className={[style.font,"border-bottom border-2 me-4 "].join(' ')}
               style={{ fontSize: '22px' }}
             />
             <Tab
               value="four"
               label="صحي"
-              className='border-bottom border-2 me-4'
+              className={[style.font,"border-bottom border-2 me-4 "].join(' ')}
               style={{ fontSize: '22px' }}
             />
           </Tabs>

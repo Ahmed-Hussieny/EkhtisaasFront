@@ -20,7 +20,7 @@ const AdvisorsComponent = ({ id, Image, Name, Rate, Description, Email, LinkedIn
   return (
     <div className='col-md-4 ' >
       <div className='position-relative rounded-3 '>
-        <img style={{cursor:'pointer'}} onClick={() => navigate(`/Admin/ShowAdvisors/${id}`)} src={Image} alt={`${Name}`} className='rounded-3 w-100' />
+        <img style={{cursor:'pointer',height:'200px'}} onClick={() => navigate(`/Admin/ShowAdvisors/${id}`)} src={Image} alt={`${Name}`} className='rounded-3 w-100' />
         <div className='rounded-4 p-3 w-75 m-auto' style={{ color: 'rgba(41, 41, 41, 1)', position: 'relative', bottom: '50px', left: 0, backgroundColor: 'rgba(242, 247, 252, 1)' }}>
           <div className='row gy-'>
             <div className='col-md-6 text-center'>

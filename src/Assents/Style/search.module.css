@@ -3,7 +3,7 @@
     src: url(/src/Assents/Fonts/Cairo-VariableFont_slnt\,wght.ttf);
 }
 .font{
-    font-family: 'Cairo';
+    font-family: 'Cairo' !important;
 }
 .input::placeholder {
     color: rgb(202, 202, 202);
