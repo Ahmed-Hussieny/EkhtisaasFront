@@ -8,7 +8,7 @@ export const HandelLogin = createAsyncThunk(
   async (formData) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/user/signIn",
+        `${process.env.REACT_APP_BASE_URL}/user/signIn`,
         formData
       );
 
@@ -27,7 +27,7 @@ export const HandelRegister = createAsyncThunk(
   async (formData) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/user/signUp",
+        `${process.env.REACT_APP_BASE_URL}/user/signUp`,
         formData
       );
 
@@ -46,7 +46,7 @@ export const HandelVerifyEmail = createAsyncThunk(
   async (formData) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/user/verifyEmail",
+        `${process.env.REACT_APP_BASE_URL}/user/verifyEmail`,
         formData
       );
 
@@ -65,7 +65,7 @@ export const HandelForgetPassword = createAsyncThunk(
   async (formData) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/user/forgetPassword",
+        `${process.env.REACT_APP_BASE_URL}/user/forgetPassword`,
         formData
       );
 
@@ -84,7 +84,7 @@ export const HandelOTP = createAsyncThunk(
   async (formData) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/user/otpverification",
+        `${process.env.REACT_APP_BASE_URL}/user/otpverification`,
         formData
       );
 
@@ -103,13 +103,114 @@ export const HandelResetPassword = createAsyncThunk(
   async (formData) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/user/ResetPassword",
+       `${process.env.REACT_APP_BASE_URL}/user/ResetPassword`,
         formData
       );
 
       return response.data;
     } catch (error) {
       console.error("Error occurred during password reset:", error.response.data);
+      return error.response.data;
+    }
+  }
+);
+// &============================= HandelGetCountOfVisitors================
+
+
+export const HandelGetCountOfVisitors = createAsyncThunk(
+  "auth/HandelGetCountOfVisitors",
+  async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_BASE_URL}/user/CountOfVisitors`,
+        {
+          headers: {
+            accessToken: "prefixToken_" + localStorage.getItem("Token"),
+          },
+        }
+      );
+
+      return response.data;
+    } catch (error) {
+      console.error("Error occurred during Get Count Of Visitors", error.response.data);
+      return error.response.data;
+    }
+  }
+);
+// &============================= HandelPutCountOfVisitors================
+export const HandelPutCountOfVisitors = createAsyncThunk(
+  "auth/HandelPutCountOfVisitors",
+  async (id) => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_BASE_URL}/user/CountOfVisitorsForsingle/${id}`,
+        {
+          headers: {
+            accessToken: "prefixToken_" + localStorage.getItem("Token"),
+          },
+        }
+      );
+
+      return response.data;
+    } catch (error) {
+      console.error("Error occurred during Get Count Of Visitors", error.response.data);
+      return error.response.data;
+    }
+  }
+);
+// &============================= HandelSendEmailFromHomePage================
+
+export const HandelSendEmailFromHomePage = createAsyncThunk(
+  "auth/HandelSendEmailFromHomePage",
+  async (formdata) => {
+    console.log(formdata);
+    const body = formdata
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_BASE_URL}/user/sendEmailFromHomePage`,body,
+      );
+
+      return response.data;
+    } catch (error) {
+      console.error("Error occurred during Get Count Of Visitors", error.response.data);
+      return error.response.data;
+    }
+  }
+);
+// &============================= sendEmailFromContactUsPage================
+
+export const sendEmailFromContactUsPage = createAsyncThunk(
+  "auth/sendEmailFromContactUsPage",
+  async (formdata) => {
+    console.log(formdata);
+    const body = formdata
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_BASE_URL}/user/sendEmailFromContactUsPage`,body,
+      );
+
+      return response.data;
+    } catch (error) {
+      console.error("Error occurred during Get Count Of Visitors", error.response.data);
+      return error.response.data;
+    }
+  }
+);
+// &============================= sendEmailFromContactUsPage================
+
+export const HandelPutTheWebsiteInformation = createAsyncThunk(
+  "auth/HandelPutTheWebsiteInformation",
+  async (formdata) => {
+    console.log(formdata);
+    const body = formdata
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_BASE_URL}/user/PutTheWebsiteInformation`,body,
+      );
+
+      return response.data;
+    } catch (error) {
+      console.error("Error occurred during Puting The Website Information", error.response.data);
       return error.response.data;
     }
   }
@@ -180,6 +281,46 @@ const AuthSlice = createSlice({
     builder.addCase(HandelResetPassword.rejected, (state, action) => {
       state.UserData = action.payload.userData;
       console.error(action.payload.userData);
+    });
+     //^HandelGetCountOfVisitors
+    builder.addCase(HandelGetCountOfVisitors.fulfilled, (state, action) => {
+      state.UserData = action.payload.userData;
+      console.log(action.payload.userData);
+    });
+    builder.addCase(HandelGetCountOfVisitors.rejected, (state, action) => {
+      state.UserData = action.payload.userData;
+      console.error(action.payload.userData);
+      
+    });
+    //^HandelPutCountOfVisitors
+    builder.addCase(HandelPutCountOfVisitors.fulfilled, (state, action) => {
+      state.UserData = action.payload.userData;
+      console.log(action.payload.userData);
+    });
+    builder.addCase(HandelPutCountOfVisitors.rejected, (state, action) => {
+      state.UserData = action.payload.userData;
+      console.error(action.payload.userData);
+      
+    });
+    //^HandelSendEmailFromHomePage
+    builder.addCase(HandelSendEmailFromHomePage.fulfilled, (state, action) => {
+      state.UserData = action.payload.userData;
+      console.log(action.payload.userData);
+    });
+    builder.addCase(HandelSendEmailFromHomePage.rejected, (state, action) => {
+      state.UserData = action.payload.userData;
+      console.error(action.payload.userData);
+      
+    });
+    // ^sendEmailFromContactUsPage
+    builder.addCase(sendEmailFromContactUsPage.fulfilled, (state, action) => {
+      state.UserData = action.payload.userData;
+      console.log(action.payload.userData);
+    });
+    builder.addCase(sendEmailFromContactUsPage.rejected, (state, action) => {
+      state.UserData = action.payload.userData;
+      console.error(action.payload.userData);
+      
     });
   },
 });

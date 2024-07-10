@@ -28,6 +28,7 @@ import { Dropdown } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useMediaQuery } from '@mui/material';
 import style from '../../Assents/Style/ProfessionalCertification.module.css'
+import { HandelPutCountOfVisitors } from '../../store/AuthSlice';
 const CertificateDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -177,6 +178,8 @@ const CertificateDetails = () => {
   ];
 
   const getCertificateData = async () => {
+    await dispatch(HandelPutCountOfVisitors(4))
+
     const res = await dispatch(HandelGetSingleCertificate(id));
     setCertificateData(res.payload.data);
     console.log(res.payload.data);
@@ -247,7 +250,7 @@ const CertificateDetails = () => {
         </div>
         {/* 2 */}
         <div className='text-center'>
-          <img src={certificateData?.organizationImage?.secure_url} alt='organizationImage' />
+          <img style={{width:'150px'}} src={certificateData?.organizationImage?.secure_url} alt='organizationImage' />
         </div>
         {/* 3 */}
         <div className='text-center py-4'>
@@ -280,9 +283,9 @@ const CertificateDetails = () => {
                 {tabs.map(tab => (
                   <div
                     key={tab.id}
-                    className={`p-3 shadow-sm text-center px-4 rounded-3  ${activeTab === tab.id ? 'text-white' : 'bg-white'}`}
+                    className={`p-3 shadow-sm text-center px-5 rounded-3  ${activeTab === tab.id ? 'text-white' : 'bg-white'}`}
                     onClick={() => setActiveTab(tab.id)}
-                    style={{ cursor: 'pointer',backgroundColor:activeTab?'rgba(31, 42, 68, 1)':"" }}
+                    style={{  cursor: 'pointer',backgroundColor:activeTab?'rgba(31, 42, 68, 1)':"" }}
                   >
                     <img src={tab.icon} alt={tab.id} />
                     <p style={{ fontSize: '20px' }}>{tab.title}</p>
@@ -373,7 +376,7 @@ const CertificateDetails = () => {
                     return <div>
                         <div>
                             <div className='my-4'>
-                            <img className='w-75' src={el.Image.secure_url} alt=''/>
+                            <img className='w-50' src={el.Image.secure_url} alt=''/>
                             </div>
                             <div>
                             <a href={el.selfEducationURL} style={{fontSize:'22px',fontWeight:'bold',color:'rgba(70, 70, 70, 1)'}} target='_blank'> {el.selfEducationTitle} </a>
@@ -396,7 +399,7 @@ const CertificateDetails = () => {
                     return <div>
                         <div>
                             <div className='my-4'>
-                            <img className='' src={el.Image.secure_url} alt=''/>
+                            <img  className='w-50' src={el.Image.secure_url} alt=''/>
                             </div>
                             <div>
                             <a href={el.directEducationURL} style={{fontSize:'22px',fontWeight:'bold',color:'rgba(70, 70, 70, 1)'}} target='_blank'> {el.directEducationTitle} </a>
@@ -409,7 +412,7 @@ const CertificateDetails = () => {
         </div>
       </div>
     {/* forth section */}
-        {certificateData.supportSides.length >0 ?
+        {certificateData?.supportSides?.length >0 ?
         <div className={[style.bgImage4,"pb-5 mb-5"].join(" ")}>
         <div className=' d-flex justify-content-center align-items-center my-5 pt-5'>
       <div className='pb-5'>
@@ -425,11 +428,13 @@ const CertificateDetails = () => {
             {certificateData.supportSides.map((el)=>{
                 return <div className='col-md-4'>
                         <div className='text-center'>
-                            <img className='w-75' src={el.Image.secure_url} alt=''/>
+                            <img className='w-50' src={el.Image.secure_url} alt=''/>
                         </div>
+                        <a href={el.supportSideUrl} style={{fontSize:'22px',fontWeight:'bold',color:'rgba(70, 70, 70, 1)'}} target='_blank'> 
                         <div className='text-center pt-3'>
                             <p style={{fontSize:'22px'}}>{el.supportSideTitle}</p>
                         </div>
+                        </a>
             </div>
             })}
             

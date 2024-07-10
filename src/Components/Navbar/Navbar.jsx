@@ -1,12 +1,16 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import logo from '../../Assents/Images/navbar/image 1.png';
-import style from '../../Assents/Style/Auth.module.css';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import logo from "../../Assents/Images/navbar/image 1.png";
+import style from "../../Assents/Style/Auth.module.css";
 
 const Navbar = () => {
   return (
     <div>
-      <nav className={[style.font, 'navbar navbar-expand-lg bg-transparent'].join(' ')}>
+      <nav
+        className={[style.font, "navbar navbar-expand-lg bg-transparent"].join(
+          " "
+        )}
+      >
         <div className="container-fluid px-lg-5 ">
           <NavLink className="navbar-brand" to="#">
             <img src={logo} alt="logo" />
@@ -24,63 +28,39 @@ const Navbar = () => {
           </button>
           <div className="collapse w-100 navbar-collapse" id="navbarNav">
             <ul className="navbar-nav w-100 justify-content-between">
-              <li className={[style.navItem, 'nav-item'].join(' ')}>
-                <NavLink
-                  exact
-                  className={[style.navLink, 'nav-link'].join(' ')}
-                  activeClassName={style.activeLink}
-                  to="/HomePage"
-                >
+              <li className={["nav-item"].join(" ")}>
+                <NavLink                   activeClassName={style.activeNavLink}
+ className={["nav-link"].join(" ")} to="/HomePage">
                   الرئيسية
                 </NavLink>
               </li>
-              <li className={[style.navItem, 'nav-item'].join(' ')}>
-                <NavLink
-                  exact
-                  className={[style.navLink, 'nav-link'].join(' ')}
-                  activeClassName={style.activeLink}
-                  to="/AboutUs"
-                >
+              <li className={["nav-item"].join(" ")}>
+                <NavLink                   activeClassName={style.activeNavLink}
+ className={["nav-link"].join(" ")} to="/AboutUs">
                   من نحن
                 </NavLink>
               </li>
-              <li className={[style.navItem, 'nav-item'].join(' ')}>
-                <NavLink
-                  exact
-                  className={[style.navLink, 'nav-link'].join(' ')}
-                  activeClassName={style.activeLink}
-                  to="/OurServices"
-                >
+              <li className={["nav-item"].join(" ")}>
+                <NavLink                   activeClassName={style.activeNavLink}
+ className={["nav-link"].join(" ")} to="/OurServices">
                   خدماتنا
                 </NavLink>
               </li>
-              <li className={[style.navItem, 'nav-item'].join(' ')}>
-                <NavLink
-                  exact
-                  className={[style.navLink, 'nav-link'].join(' ')}
-                  activeClassName={style.activeLink}
-                  to="/ContactUs"
-                >
+              <li className={["nav-item"].join(" ")}>
+                <NavLink                   activeClassName={style.activeNavLink}
+ className={["nav-link"].join(" ")} to="/ContactUs">
                   تواصل معنا
                 </NavLink>
               </li>
-              <li className={[style.navItem, 'nav-item'].join(' ')}>
-                <NavLink
-                  exact
-                  className={[style.navLink, 'nav-link'].join(' ')}
-                  activeClassName={style.activeLink}
-                  to="/Search"
-                >
+              <li className={["nav-item"].join(" ")}>
+                <NavLink                   activeClassName={style.activeNavLink}
+ className={["nav-link"].join(" ")} to="/Search">
                   بحث
                 </NavLink>
               </li>
-              <li className={[style.navItem, 'nav-item'].join(' ')}>
-                <NavLink
-                  exact
-                  className={[style.navLink, 'nav-link'].join(' ')}
-                  activeClassName={style.activeLink}
-                  to="/"
-                >
+              <li className={["nav-item"].join(" ")}>
+                <NavLink                   activeClassName={style.activeNavLink}
+ className={[style.navLink,"nav-link"].join(" ")} to="/">
                   <span>انشاء حساب / تسجيل دخول</span>
                 </NavLink>
               </li>

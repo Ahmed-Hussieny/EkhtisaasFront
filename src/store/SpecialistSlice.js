@@ -7,7 +7,7 @@ export const HandelAddSpecialist = createAsyncThunk(
   async (formData) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/Specialist/AddSpecialist",
+        `${process.env.REACT_APP_BASE_URL}/Specialist/AddSpecialist`,
         formData,
         {
           headers: {
@@ -30,7 +30,7 @@ export const HandelUpdateSpecialist = createAsyncThunk(
         let body = formdata
       try {
         const response = await axios.put(
-          `http://localhost:3000/Specialist/updateSpecialist/${id}`,
+          `${process.env.REACT_APP_BASE_URL}/Specialist/updateSpecialist/${id}`,
           body,
           {
             headers: {
@@ -52,7 +52,7 @@ export const HandeldeleteSpecialist = createAsyncThunk(
     async (id) => {
       try {
         const response = await axios.delete(
-          `http://localhost:3000/Specialist/deleteSpecialist/${id}`,
+          `${process.env.REACT_APP_BASE_URL}/Specialist/deleteSpecialist/${id}`,
           {
             headers: {
               accessToken: "prefixToken_" + localStorage.getItem("Token"),
@@ -73,7 +73,7 @@ export const HandelGetAllSpecialists = createAsyncThunk(
     async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/Specialist/GetAllSpecialists",
+         `${process.env.REACT_APP_BASE_URL}/Specialist/GetAllSpecialists`,
           {
             headers: {
               accessToken: "prefixToken_" + localStorage.getItem("Token"),
@@ -94,7 +94,7 @@ export const HandelGetSingleSpecialist = createAsyncThunk(
     async (id) => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/Specialist/GetSingleSpecialist/${id}`,
+         `${process.env.REACT_APP_BASE_URL}/Specialist/GetSingleSpecialist/${id}`,
           {
             headers: {
               accessToken: "prefixToken_" + localStorage.getItem("Token"),

@@ -49,7 +49,7 @@ const CareerGuidance = () => {
   const handlePageChangeForScientificData = (event, value) => {
     setCurrentPageForScientificData(value);
   };
-  const currentDataForScientificData = AdvisorData.slice(
+  const currentDataForScientificData = AdvisorData?.slice(
     (currentPageForScientificData - 1) * itemsPerPage,
     currentPageForScientificData * itemsPerPage
   );

@@ -16,4 +16,7 @@ body{
 .sidebar-content .activeClicked {
     background-color: red !important;
   }
+  .activeClicked {
+    background-color: red !important;
+  }
   

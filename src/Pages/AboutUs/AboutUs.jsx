@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import "./style.css";
 import style from "../../Assents/Style/AboutUs.module.css";
 import img from "../../Assents/Images/AboutUs/illustration.svg";
@@ -9,8 +9,18 @@ import icon3 from "../../Assents/Images/AboutUs/Vector (1).svg";
 import icon4 from "../../Assents/Images/AboutUs/Group 51.svg";
 import Img2 from "../../Assents/Images/AboutUs/cuate.svg";
 import AboutHistoryItem from "../../Components/AboutUs/AboutHistoryItem";
+import { HandelPutCountOfVisitors } from "../../store/AuthSlice";
+import { useDispatch } from "react-redux";
 
 const AboutUs = () => {
+  const dispatch =useDispatch()
+
+  const putPageCount = async()=>{
+    await dispatch(HandelPutCountOfVisitors(5))
+}
+useEffect(()=>{
+putPageCount()
+},[])
   return (
     <div className={style.font}>
       <div className="container mt-5">

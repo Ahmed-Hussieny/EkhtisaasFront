@@ -3,7 +3,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const ProfessionalCertificationComponent = ({ id,Title, Description, Level, Image }) => {
-  console.log(Level);
     const navigate = useNavigate()
   const getBorderColor = (level) => {
     if (level === "مبتدئ") return "rgba(40, 170, 222, 1)";
@@ -19,7 +18,7 @@ const ProfessionalCertificationComponent = ({ id,Title, Description, Level, Imag
       className="rounded-4 position-relative"
       style={{
         border: '1px solid',
-        height:"210px",
+        height:'250px',
         borderColor: getBorderColor(Level),
       }}
     >
@@ -31,7 +30,7 @@ const ProfessionalCertificationComponent = ({ id,Title, Description, Level, Imag
     <div className='mt-5 mb-3 text-center'>
         <p>شعار المنظمة</p>
         <div>
-        <img className='w-50 ' src={Image} alt={Title} />
+        <img className='w-50' src={Image} alt={Title} />
         </div>
     </div>
     </div>

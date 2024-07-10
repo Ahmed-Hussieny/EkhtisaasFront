@@ -526,7 +526,7 @@ const AddSpecialist = () => {
     <div className='row'>
                             <div className='col-md-6'></div>
                             <div className='col-md-6'>
-                                <div className='row'>
+                                <div className='row mb-5'>
                                 <div className='col-md-6'>
                                 {loading ?(
                                     <button type="button" className='btn text-white rounded-2 py-3 mt-1 w-100' style={{ backgroundColor: 'rgba(40, 42, 68, 1)' }}>

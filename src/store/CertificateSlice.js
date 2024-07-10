@@ -7,7 +7,7 @@ export const HandelAddCertificate = createAsyncThunk(
   async (formData) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/Certificate/AddCertificate",
+        `${process.env.REACT_APP_BASE_URL}/Certificate/AddCertificate`,
         formData,
         {
           headers: {
@@ -30,7 +30,7 @@ export const HandelUpdateCertificate = createAsyncThunk(
     try {
       const body = formData
       const response = await axios.put(
-        `http://localhost:3000/Certificate/UpdateCertificate/${id}`,
+        `${process.env.REACT_APP_BASE_URL}/Certificate/UpdateCertificate/${id}`,
         body,
         {
           headers: {
@@ -52,7 +52,7 @@ export const HandelDeleteCertificate = createAsyncThunk(
   async (id) => {
     try {
       const response = await axios.delete(
-        `http://localhost:3000/Certificate/DeleteCertificate/${id}`,
+        `${process.env.REACT_APP_BASE_URL}/Certificate/DeleteCertificate/${id}`,
         {
           headers: {
             accessToken: "prefixToken_" + localStorage.getItem("Token"),
@@ -73,7 +73,7 @@ export const HandelAddDirectEducation = createAsyncThunk(
     async ({formData,id}) => {
       try {
         const response = await axios.post(
-          `http://localhost:3000/directEducation/AddDirectEducation/${id}`,
+          `${process.env.REACT_APP_BASE_URL}/directEducation/AddDirectEducation/${id}`,
           formData,
           {
             headers: {
@@ -95,7 +95,7 @@ export const HandelUpdateDirectEducation = createAsyncThunk(
   async ({formData,id}) => {
     try {
       const response = await axios.put(
-        `http://localhost:3000/directEducation/UpdateDirectEducation/${id}`,
+        `${process.env.REACT_APP_BASE_URL}/directEducation/UpdateDirectEducation/${id}`,
         formData,
         {
           headers: {
@@ -117,7 +117,7 @@ export const HandelUpdateDirectEducation = createAsyncThunk(
     async (id) => {
       try {
         const response = await axios.delete(
-          `http://localhost:3000/directEducation/DeleteDirectEducation/${id}`,
+         `${process.env.REACT_APP_BASE_URL}/directEducation/DeleteDirectEducation/${id}`,
           {
             headers: {
               accessToken: "prefixToken_" + localStorage.getItem("Token"),
@@ -138,7 +138,7 @@ export const HandelAddSelfEducation = createAsyncThunk(
     async ({formData,id}) => {
       try {
         const response = await axios.post(
-          `http://localhost:3000/selfEducation/AddSelfEducation/${id}`,
+          `${process.env.REACT_APP_BASE_URL}/selfEducation/AddSelfEducation/${id}`,
           formData,
           {
             headers: {
@@ -160,7 +160,7 @@ export const HandelUpdateSelfEducation = createAsyncThunk(
   async ({formData,id}) => {
     try {
       const response = await axios.put(
-        `http://localhost:3000/selfEducation/UpdateSelfEducation/${id}`,
+        `${process.env.REACT_APP_BASE_URL}/selfEducation/UpdateSelfEducation/${id}`,
         formData,
         {
           headers: {
@@ -182,7 +182,7 @@ export const HandelUpdateSelfEducation = createAsyncThunk(
     async (id) => {
       try {
         const response = await axios.delete(
-          `http://localhost:3000/selfEducation/DeleteSelfEducation/${id}`,
+          `${process.env.REACT_APP_BASE_URL}/selfEducation/DeleteSelfEducation/${id}`,
           {
             headers: {
               accessToken: "prefixToken_" + localStorage.getItem("Token"),
@@ -203,7 +203,7 @@ export const HandelAddSupportSide = createAsyncThunk(
     async ({formData,id}) => {
       try {
         const response = await axios.post(
-          `http://localhost:3000/supportSide/AddSupportSide/${id}`,
+          `${process.env.REACT_APP_BASE_URL}/supportSide/AddSupportSide/${id}`,
           formData,
           {
             headers: {
@@ -225,7 +225,7 @@ export const HandelUpdateSupportSide = createAsyncThunk(
   async ({formData,id}) => {
     try {
       const response = await axios.put(
-        `http://localhost:3000/supportSide/UpdateSupportSide/${id}`,
+        `${process.env.REACT_APP_BASE_URL}/supportSide/UpdateSupportSide/${id}`,
         formData,
         {
           headers: {
@@ -247,7 +247,7 @@ export const HandelDeleteSupportSide = createAsyncThunk(
   async (id) => {
     try {
       const response = await axios.delete(
-        `http://localhost:3000/supportSide/DeleteSupportSide/${id}`,
+        `${process.env.REACT_APP_BASE_URL}/supportSide/DeleteSupportSide/${id}`,
         {
           headers: {
             accessToken: "prefixToken_" + localStorage.getItem("Token"),
@@ -268,7 +268,28 @@ export const HandelGetSingleCertificate = createAsyncThunk(
   async (id) => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/Certificate/GetSinglecertificate/${id}`,
+        `${process.env.REACT_APP_BASE_URL}/Certificate/GetSinglecertificate/${id}`,
+        {
+          headers: {
+            accessToken: "prefixToken_" + localStorage.getItem("Token"),
+          },
+        }
+      );
+
+      return response.data;
+    } catch (error) {
+      console.error("Error during login:", error);
+      return error.response || { error: "An error occurred" };
+    }
+  }
+);
+  // &----------------------------------------- Get ALL Certificate  --------------------------------------------
+export const HandelGetAllCertificate = createAsyncThunk(
+  "Certificate/HandelGetAllCertificate",
+  async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_BASE_URL}/Certificate/GetAllCertificates`,
         {
           headers: {
             accessToken: "prefixToken_" + localStorage.getItem("Token"),
@@ -404,6 +425,15 @@ const AuthSlice = createSlice({
         console.log(action.payload.Data);
       });
       builder.addCase(HandelGetSingleCertificate.rejected, (state, action) => {
+        state.SpecialtyData = action.payload.Data;
+        console.error(action.payload.Data);
+      });
+      // ^HandelGetAllCertificate
+      builder.addCase(HandelGetAllCertificate.fulfilled, (state, action) => {
+        state.SpecialtyData = action.payload.Data;
+        console.log(action.payload.Data);
+      });
+      builder.addCase(HandelGetAllCertificate.rejected, (state, action) => {
         state.SpecialtyData = action.payload.Data;
         console.error(action.payload.Data);
       });

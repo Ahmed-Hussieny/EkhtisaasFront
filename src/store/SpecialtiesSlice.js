@@ -7,7 +7,7 @@ export const HandelAddMainSpecialty = createAsyncThunk(
   async (formData) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/MainSpecialty/AddMainSpecialty",
+        `${process.env.REACT_APP_BASE_URL}/MainSpecialty/AddMainSpecialty`,
         formData,
         {
           headers: {
@@ -29,7 +29,7 @@ export const HandelUpdateMainSpecialty = createAsyncThunk(
   async ({formData,id}) => {
     try {
       const response = await axios.put(
-        `http://localhost:3000/MainSpecialty/updateMainSpecialty/${id}`,
+        `${process.env.REACT_APP_BASE_URL}/MainSpecialty/updateMainSpecialty/${id}`,
         formData,
         {
           headers: {
@@ -51,7 +51,7 @@ export const HandelDeleteMainSpecialty = createAsyncThunk(
   async (id) => {
     try {
       const response = await axios.delete(
-        `http://localhost:3000/MainSpecialty/DeleteMainSpecialty/${id}`,
+        `${process.env.REACT_APP_BASE_URL}/MainSpecialty/DeleteMainSpecialty/${id}`,
         {
           headers: {
             accessToken: "prefixToken_" + localStorage.getItem("Token"),
@@ -72,7 +72,7 @@ export const HandelGetSingleMainSpecialty = createAsyncThunk(
   async (id) => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/MainSpecialty/GetSingleMainSpecialty/${id}`,
+        `${process.env.REACT_APP_BASE_URL}/MainSpecialty/GetSingleMainSpecialty/${id}`,
         {
           headers: {
             accesstoken: "prefixToken_" + localStorage.getItem("Token"),
@@ -93,7 +93,7 @@ export const HandelGetAllMainSpecialty = createAsyncThunk(
   async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/MainSpecialty/GetAllMainSpecialties",
+       `${process.env.REACT_APP_BASE_URL}/MainSpecialty/GetAllMainSpecialties`,
         {
           headers: {
             accesstoken: "prefixToken_" + localStorage.getItem("Token"),
@@ -117,7 +117,7 @@ export const HandelAddSubSpecialty = createAsyncThunk(
   async (formData) => {
     try {
       const response = await axios.post(
-        `http://localhost:3000/SubSpecialty/AddSubSpecialty`,
+        `${process.env.REACT_APP_BASE_URL}/SubSpecialty/AddSubSpecialty`,
         formData,
         {
           headers: {
@@ -139,7 +139,7 @@ export const HandelUpdateSubSpecialty = createAsyncThunk(
   async ({formData,id}) => {
     try {
       const response = await axios.put(
-        `http://localhost:3000/SubSpecialty/updateSubSpecialty/${id}`,
+        `${process.env.REACT_APP_BASE_URL}/SubSpecialty/updateSubSpecialty/${id}`,
         formData,
         {
           headers: {
@@ -161,7 +161,7 @@ export const HandelDeleteSubSpecialty = createAsyncThunk(
   async (id) => {
     try {
       const response = await axios.delete(
-        `http://localhost:3000/SubSpecialty/DeleteSubSpecialty/${id}`,
+       `${process.env.REACT_APP_BASE_URL}/SubSpecialty/DeleteSubSpecialty/${id}`,
         {
           headers: {
             accessToken: "prefixToken_" + localStorage.getItem("Token"),
@@ -182,7 +182,7 @@ export const HandelGetAllSubSpecialty = createAsyncThunk(
   async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/SubSpecialty/GetAllSubSpecialties",
+       `${process.env.REACT_APP_BASE_URL}/SubSpecialty/GetAllSubSpecialties`,
         {
           headers: {
             accesstoken: "prefixToken_" + localStorage.getItem("Token"),
@@ -203,7 +203,7 @@ export const HandelGetSingleSubSpecialty = createAsyncThunk(
   async (id) => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/SubSpecialty/GetSingleSubSpecialty/${id}`,
+       `${process.env.REACT_APP_BASE_URL}/SubSpecialty/GetSingleSubSpecialty/${id}`,
         {
           headers: {
             accesstoken: "prefixToken_" + localStorage.getItem("Token"),

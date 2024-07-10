@@ -12,7 +12,7 @@ const AboutUsComponent = ({icon,text,desc}) => {
             </div>
         </div>
         <div className='m-auto w-75 pt-5 text-center'>
-        <p className='px-4' style={{fontSize:'24px',color:'rgba(70, 70, 70, 1)'}}>{desc}</p>
+        <p className='px-lg-4' style={{fontSize:'24px',color:'rgba(70, 70, 70, 1)'}}>{desc}</p>
         </div>
     </div>
   )

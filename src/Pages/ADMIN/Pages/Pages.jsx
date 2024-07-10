@@ -21,14 +21,14 @@ const Pages = () => {
         </div>
         <div className="mt-5">
         <div className="row gx-3 gy-4">
-            <PagesComponent Text={"الرئيسية"} />
+            {/* <PagesComponent Text={"الرئيسية"} />
             <PagesComponent Text={"من نحن"} />
-            <PagesComponent Text={"خدماتنا"} />
+            <PagesComponent Text={"خدماتنا"} /> */}
             <PagesComponent Text={"تواصل معنا"} />
-            <PagesComponent Text={"البحث"} />
+            {/* <PagesComponent Text={"البحث"} />
             <PagesComponent Text={"الشهادات الاحترافية"} />
             <PagesComponent Text={"خدمة اللينكدين والسيرة الذاتية"} />
-            <PagesComponent Text={"خدمة الارشاد المهني"} />
+            <PagesComponent Text={"خدمة الارشاد المهني"} /> */}
         </div>
         </div>
     </div>

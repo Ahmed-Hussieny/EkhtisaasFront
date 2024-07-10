@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import { HandelAddCertificate, HandelAddDirectEducation, HandelAddSelfEducation, HandelAddSupportSide } from '../../../store/CertificateSlice';
 import { HandelGetAllSubSpecialty } from '../../../store/SpecialtiesSlice';
 import { useNavigate } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
 
 const AddNewCertificate = () => {
     const [show, setShow] = useState(false);
@@ -41,6 +42,19 @@ const AddNewCertificate = () => {
         setFieldValue(`directEducation[${currentFieldIndex2}].directEducationURL`, link2);
         setShow2(false);
         setLink2('');
+    };
+    const [show3, setShow3] = useState(false);
+    const [link3, setLink3] = useState('');
+    const [currentFieldIndex3, setCurrentFieldIndex3] = useState(null);
+    const handleShow3 = (index) => {
+        setCurrentFieldIndex3(index);
+        setShow3(true);
+    };
+    const handleClose3 = () => setShow3(false);
+    const handleSaveLink3 = (setFieldValue) => {
+        setFieldValue(`supportSide[${currentFieldIndex3}].supportSideUrl`, link3);
+        setShow3(false);
+        setLink3('');
     };
 
     const [previews, setPreviews] = useState({ selfEducation: [], directEducation: [], supportSide: [] });
@@ -86,7 +100,7 @@ const AddNewCertificate = () => {
 
             selfEducation: [{ selfEducationTitle: '', Image: null, selfEducationURL: '' }],
             directEducation: [{ directEducationTitle: '', Image: null, directEducationURL: '' }],
-            supportSide: [{ supportSideTitle: '', Image: null}],
+            supportSide: [{ supportSideUrl:'',supportSideTitle: '', Image: null}],
             trainingCost:'',
             testCost:'',
             totalCost:'',
@@ -124,6 +138,7 @@ const AddNewCertificate = () => {
             supportSide: Yup.array().of(
                 Yup.object().shape({
                     supportSideTitle: Yup.string().required('هذا الحقل مطلوب'),
+                    supportSideUrl:Yup.string().url('Invalid URL').required('هذا الحقل مطلوب'),
                     Image: Yup.mixed().required('هذا الحقل مطلوب'),
                 })
             ),
@@ -136,67 +151,87 @@ const AddNewCertificate = () => {
         onSubmit: AddCertificate
     });
     const dispatch = useDispatch()
-    async function AddCertificate (values){
-        console.log(values);
-        const formDataCertificate = new FormData();
-        // ^ ================ Data For Certificate ===========================
-
-        formDataCertificate.append('certificateImage', values.certificateImage);
-        formDataCertificate.append('certificateName', values.certificateName);
-        formDataCertificate.append('organizationImage', values.organizationImage);
-        formDataCertificate.append('organizationName', values.organizationName);
-        formDataCertificate.append('Description', values.Description);
-        formDataCertificate.append('Specialties', values.Specialties);
-        formDataCertificate.append('JobTitle', values.JobTitle);
-        formDataCertificate.append('Prerequisites', values.Prerequisites);
-        formDataCertificate.append('scientificMethods', values.scientificMethods);
-        formDataCertificate.append('SupportedLanguages', values.SupportedLanguages);
-        formDataCertificate.append('NumberOfTests', values.NumberOfTests);
-        formDataCertificate.append('CertificateValidityPeriod', values.CertificateValidityPeriod);
-        formDataCertificate.append('trainingCost', values.trainingCost);
-        formDataCertificate.append('testCost', values.testCost);
-        formDataCertificate.append('totalCost', values.totalCost);
-        formDataCertificate.append('SubSpecialtyId',values.SubSpecialtyId)
-        formDataCertificate.append('Level',values.Level)
-        const res = await dispatch(HandelAddCertificate(formDataCertificate))
-        console.log(res.payload);
-        const id = res.payload.data._id;
-        console.log(id);
-
-        //^========================== Data For selfEducation  ===================
-        if(id){
-            for (const item of values.selfEducation) {
-
-                const formData = new FormData();
-                formData.append("selfEducationTitle",item.selfEducationTitle)
-                formData.append("selfEducationURL",item.selfEducationURL)
-                formData.append("Image",item.Image)
-                await dispatch(HandelAddSelfEducation({formData,id}))
-                
-            }
-    
-            for (const item of values.directEducation) {
-    
-                const formData = new FormData();
-                formData.append("directEducationTitle",item.directEducationTitle)
-                formData.append("directEducationURL",item.directEducationURL)
-                formData.append("Image",item.Image)
-                await dispatch(HandelAddDirectEducation({formData,id}))
-                
-            }
-            for (const item of values.supportSide) {
-    
-                const formData = new FormData();
-                formData.append("supportSideTitle",item.supportSideTitle)
-                formData.append("Image",item.Image)
-                await dispatch(HandelAddSupportSide({formData,id}))
-                
-            }
-        }
-        
-        
-    }
-
+    async function AddCertificate(values) {
+      setloading(true);
+      console.log(values);
+  
+      const formDataCertificate = new FormData();
+      // ^ ================ Data For Certificate ===========================
+      formDataCertificate.append('certificateImage', values.certificateImage);
+      formDataCertificate.append('certificateName', values.certificateName);
+      formDataCertificate.append('organizationImage', values.organizationImage);
+      formDataCertificate.append('organizationName', values.organizationName);
+      formDataCertificate.append('Description', values.Description);
+      formDataCertificate.append('Specialties', values.Specialties);
+      formDataCertificate.append('JobTitle', values.JobTitle);
+      formDataCertificate.append('Prerequisites', values.Prerequisites);
+      formDataCertificate.append('scientificMethods', values.scientificMethods);
+      formDataCertificate.append('SupportedLanguages', values.SupportedLanguages);
+      formDataCertificate.append('NumberOfTests', values.NumberOfTests);
+      formDataCertificate.append('CertificateValidityPeriod', values.CertificateValidityPeriod);
+      formDataCertificate.append('trainingCost', values.trainingCost);
+      formDataCertificate.append('testCost', values.testCost);
+      formDataCertificate.append('totalCost', values.totalCost);
+      formDataCertificate.append('SubSpecialtyId', values.SubSpecialtyId);
+      formDataCertificate.append('Level', values.Level);
+  
+      try {
+          const res = await dispatch(HandelAddCertificate(formDataCertificate));
+          console.log(res.payload);
+  
+          if (!res.payload.success) {
+              throw new Error('Failed to add certificate');
+          }
+          const id = res.payload.data._id;
+  
+          // Collect all the promises for selfEducation, directEducation, and supportSide
+          const selfEducationPromises = values.selfEducation.map(item => {
+              const formData = new FormData();
+              formData.append("selfEducationTitle", item.selfEducationTitle);
+              formData.append("selfEducationURL", item.selfEducationURL);
+              formData.append("Image", item.Image);
+              return dispatch(HandelAddSelfEducation({ formData, id }));
+          });
+  
+          const directEducationPromises = values.directEducation.map(item => {
+              const formData = new FormData();
+              formData.append("directEducationTitle", item.directEducationTitle);
+              formData.append("directEducationURL", item.directEducationURL);
+              formData.append("Image", item.Image);
+              return dispatch(HandelAddDirectEducation({ formData, id }));
+          });
+  
+          const supportSidePromises = values.supportSide.map(item => {
+              const formData = new FormData();
+              formData.append("supportSideTitle", item.supportSideTitle);
+              formData.append("supportSideUrl", item.supportSideUrl);
+              formData.append("Image", item.Image);
+              return dispatch(HandelAddSupportSide({ formData, id }));
+          });
+  
+          // Wait for all promises to resolve
+          const results = await Promise.all([
+              ...selfEducationPromises,
+              ...directEducationPromises,
+              ...supportSidePromises
+          ]);
+  
+          // Check all results
+          results.forEach(res => {
+              if (!res.payload.success) {
+                  throw new Error('Failed to add some education or support side data');
+              }
+          });
+          toast.success(res.payload.message);
+          
+      } catch (error) {
+          console.error(error);
+          toast.error('An error occurred. Please try again.');
+      } finally {
+          setloading(false);
+      }
+  }
+  
     // Image One
     const [preview, setPreview] = useState(null);
     const handleImageChange = (event) => {
@@ -249,6 +284,24 @@ const AddNewCertificate = () => {
       };
     return (
         <FormikProvider value={formik}>
+          <Toaster
+  toastOptions={{
+    success: {
+      style: {
+        background: 'green',
+        color:'white',
+        fontWeight:'bold'
+      },
+    },
+    error: {
+      style: {
+        background: '#951233',
+        color:'white',
+        fontWeight:'bold'
+      },
+    },
+  }}
+/>
             <div className={style.font}>
             <div className="my-3 px-4">
       <label htmlFor="SubSpecialty" className="form-label">
@@ -515,181 +568,227 @@ const AddNewCertificate = () => {
       <label className="form-label fw-bold" style={{ fontSize: '15px' }}>تعليم ذاتي</label>
 
       <FieldArray name="selfEducation">
-        {({ remove, push }) => (
-          <>
-            {formik.values.selfEducation.map((field, index) => (
-              <div key={index} className='row gy-3'>
-                <div className='col-md-3'>
-                  <div className='pe-2 rounded-2 mb-1' style={{ backgroundColor: 'rgba(247, 247, 247, 1)', height: '60px' }}>
-                    <input
-                      type="file"
-                      accept="image/*"
-                      style={{ display: 'none' }}
-                      onChange={(event) => handleImageChangeImages(event, 'selfEducation', index, 'selfEducation')}
-                      id={`trainingFieldFile-${index}`}
-                    />
-                    <p style={{ cursor: 'pointer', display: 'flex',  alignItems: 'center', height: '100%' }} onClick={() => document.getElementById(`trainingFieldFile-${index}`).click()}>
-                      {previews.selfEducation[index] ? (
-                        <img className='m-auto' src={previews.selfEducation[index]} alt="Selected" style={{ height: '100%', objectFit: 'contain' }} />
-                      ) : (
-                        <>
-                          <img src={uploadImage} className='ms-2 mt-3' alt='uploadImage' style={{ height: '100%', objectFit: 'contain' }} />
-                          <span>أضف صورة</span>
-                        </>
-                      )}
-                    </p>
-                  </div>
-                  {formik.touched.selfEducation?.[index]?.Image && formik.errors.selfEducation?.[index]?.Image ? (
-                    <div className="alert py-1 alert-danger">{formik.errors.selfEducation[index].Image}</div>
-                  ) : null}
-                </div>
-                <div className='col-md-9'>
-                  <div className='d-flex px-3 rounded-3' style={{ backgroundColor: 'rgba(247, 247, 247, 1)' }}>
-                    <input
-                      type="text"
-                      placeholder='أضف اسم الجهة'
-                      className="form-control py-3 border-0"
-                      id={`trainingFieldName-${index}`}
-                      style={{ backgroundColor: 'rgba(247, 247, 247, 1)' }}
-                      {...formik.getFieldProps(`selfEducation[${index}].selfEducationTitle`)}
-                    />
-                    <div>
-                      <img src={urlIcon} alt='' onClick={() => handleShow(index)} style={{ cursor: 'pointer' }} />
-                    </div>
-                  </div>
-                  {formik.touched.selfEducation?.[index]?.selfEducationTitle && formik.errors.selfEducation?.[index]?.selfEducationTitle ? (
-                    <div className="alert py-1 alert-danger">{formik.errors.selfEducation[index].selfEducationTitle}</div>
-                  ) : null}
-                </div>
-              </div>
-            ))}
-            <div>
-              <p style={{ cursor: 'pointer', color: 'black' }} onClick={() => push({ selfEducationTitle: '', Image: null, selfEducationURL: '' })}>
-                + أضف جهة تدريب جديدة
+  {({ remove, push }) => (
+    <>
+      {formik.values.selfEducation.map((field, index) => (
+        <div key={index} className='row gy-3'>
+          <div className='col-md-3'>
+            <div className='pe-2 rounded-2 mb-1' style={{ backgroundColor: 'rgba(247, 247, 247, 1)', height: '60px' }}>
+              <input
+                type="file"
+                accept="image/*"
+                style={{ display: 'none' }}
+                onChange={(event) => handleImageChangeImages(event, 'selfEducation', index, 'selfEducation')}
+                id={`trainingFieldFile-${index}`}
+              />
+              <p style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', height: '100%' }} onClick={() => document.getElementById(`trainingFieldFile-${index}`).click()}>
+                {previews.selfEducation[index] ? (
+                  <img className='m-auto' src={previews.selfEducation[index]} alt="Selected" style={{ height: '100%', objectFit: 'contain' }} />
+                ) : (
+                  <>
+                    <img src={uploadImage} className='ms-2 mt-3' alt='uploadImage' style={{ height: '100%', objectFit: 'contain' }} />
+                    <span>أضف صورة</span>
+                  </>
+                )}
               </p>
             </div>
-          </>
-        )}
-      </FieldArray>
+            {formik.touched.selfEducation?.[index]?.Image && formik.errors.selfEducation?.[index]?.Image ? (
+              <div className="alert py-1 alert-danger">{formik.errors.selfEducation[index].Image}</div>
+            ) : null}
+          </div>
+          <div className='col-md-9'>
+            <div className='d-flex px-3 rounded-3' style={{ backgroundColor: 'rgba(247, 247, 247, 1)' }}>
+              <input
+                type="text"
+                placeholder='أضف اسم الجهة'
+                className="form-control py-3 border-0"
+                id={`trainingFieldName-${index}`}
+                style={{ backgroundColor: 'rgba(247, 247, 247, 1)' }}
+                {...formik.getFieldProps(`selfEducation[${index}].selfEducationTitle`)}
+              />
+              <div>
+                <img src={urlIcon} alt='' onClick={() => handleShow(index)} style={{ cursor: 'pointer' }} />
+              </div>
+              <button
+                type="button"
+                onClick={() => remove(index)}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  color: 'red',
+                  cursor: 'pointer',
+                  marginLeft: '10px'
+                }}
+              >
+                حذف
+              </button>
+            </div>
+            {formik.touched.selfEducation?.[index]?.selfEducationTitle && formik.errors.selfEducation?.[index]?.selfEducationTitle ? (
+              <div className="alert py-1 alert-danger">{formik.errors.selfEducation[index].selfEducationTitle}</div>
+            ) : null}
+          </div>
+        </div>
+      ))}
+      <div>
+        <p style={{ cursor: 'pointer', color: 'black' }} onClick={() => push({ selfEducationTitle: '', Image: null, selfEducationURL: '' })}>
+          + أضف جهة تدريب جديدة
+        </p>
+      </div>
+    </>
+  )}
+</FieldArray>
+
       <label className="form-label fw-bold" style={{ fontSize: '15px' }}>تعليم مباشر</label>
 
       <FieldArray name="directEducation">
-        {({ remove, push }) => (
-          <>
-            {formik.values.directEducation.map((field, index) => (
-              <div key={index} className='row gy-3'>
-                <div className='col-md-3'>
-                  <div className='pe-2 rounded-2 mb-1' style={{ backgroundColor: 'rgba(247, 247, 247, 1)', height: '60px' }}>
-                    <input
-                      type="file"
-                      accept="image/*"
-                      style={{ display: 'none' }}
-                      onChange={(event) => handleImageChangeImages(event, 'directEducation', index, 'directEducation')}
-                      id={`trainingFieldFile2-${index}`}
-                    />
-                    <p style={{ cursor: 'pointer', display: 'flex',  alignItems: 'center', height: '100%' }} onClick={() => document.getElementById(`trainingFieldFile2-${index}`).click()}>
-                      {previews.directEducation[index] ? (
-                        <img className='m-auto' src={previews.directEducation[index]} alt="Selected" style={{ height: '100%', objectFit: 'contain' }} />
-                      ) : (
-                        <>
-                          <img src={uploadImage} className='ms-2 mt-3' alt='uploadImage' style={{ height: '100%', objectFit: 'contain' }} />
-                          <span>أضف صورة</span>
-                        </>
-                      )}
-                    </p>
-                  </div>
-                  {formik.touched.directEducation?.[index]?.Image && formik.errors.directEducation?.[index]?.Image ? (
-                    <div className="alert py-1 alert-danger">{formik.errors.directEducation[index].Image}</div>
-                  ) : null}
-                </div>
-                <div className='col-md-9'>
-                  <div className='d-flex px-3 rounded-3' style={{ backgroundColor: 'rgba(247, 247, 247, 1)' }}>
-                    <input
-                      type="text"
-                      placeholder='أضف اسم الجهة'
-                      className="form-control py-3 border-0"
-                      id={`trainingFieldName2-${index}`}
-                      style={{ backgroundColor: 'rgba(247, 247, 247, 1)' }}
-                      {...formik.getFieldProps(`directEducation[${index}].directEducationTitle`)}
-                    />
-                    <div>
-                      <img src={urlIcon} alt='' onClick={() => handleShow2(index)} style={{ cursor: 'pointer' }} />
-                    </div>
-                  </div>
-                  {formik.touched.directEducation?.[index]?.directEducationTitle && formik.errors.directEducation?.[index]?.directEducationTitle ? (
-                    <div className="alert py-1 alert-danger">{formik.errors.directEducation[index].directEducationTitle}</div>
-                  ) : null}
-                </div>
-              </div>
-            ))}
-            <div>
-              <p style={{ cursor: 'pointer', color: 'black' }} onClick={() => push({ directEducationTitle: '', Image: null, directEducationURL: '' })}>
-                + أضف جهة تدريب جديدة
+  {({ remove, push }) => (
+    <>
+      {formik.values.directEducation.map((field, index) => (
+        <div key={index} className='row gy-3'>
+          <div className='col-md-3'>
+            <div className='pe-2 rounded-2 mb-1' style={{ backgroundColor: 'rgba(247, 247, 247, 1)', height: '60px' }}>
+              <input
+                type="file"
+                accept="image/*"
+                style={{ display: 'none' }}
+                onChange={(event) => handleImageChangeImages(event, 'directEducation', index, 'directEducation')}
+                id={`trainingFieldFile2-${index}`}
+              />
+              <p style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', height: '100%' }} onClick={() => document.getElementById(`trainingFieldFile2-${index}`).click()}>
+                {previews.directEducation[index] ? (
+                  <img className='m-auto' src={previews.directEducation[index]} alt="Selected" style={{ height: '100%', objectFit: 'contain' }} />
+                ) : (
+                  <>
+                    <img src={uploadImage} className='ms-2 mt-3' alt='uploadImage' style={{ height: '100%', objectFit: 'contain' }} />
+                    <span>أضف صورة</span>
+                  </>
+                )}
               </p>
             </div>
-          </>
-        )}
-      </FieldArray>
+            {formik.touched.directEducation?.[index]?.Image && formik.errors.directEducation?.[index]?.Image ? (
+              <div className="alert py-1 alert-danger">{formik.errors.directEducation[index].Image}</div>
+            ) : null}
+          </div>
+          <div className='col-md-9'>
+            <div className='d-flex px-3 rounded-3' style={{ backgroundColor: 'rgba(247, 247, 247, 1)' }}>
+              <input
+                type="text"
+                placeholder='أضف اسم الجهة'
+                className="form-control py-3 border-0"
+                id={`trainingFieldName2-${index}`}
+                style={{ backgroundColor: 'rgba(247, 247, 247, 1)' }}
+                {...formik.getFieldProps(`directEducation[${index}].directEducationTitle`)}
+              />
+              <div>
+                <img src={urlIcon} alt='' onClick={() => handleShow2(index)} style={{ cursor: 'pointer' }} />
+              </div>
+              <button
+                type="button"
+                onClick={() => remove(index)}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  color: 'red',
+                  cursor: 'pointer',
+                  marginLeft: '10px'
+                }}
+              >
+                حذف
+              </button>
+            </div>
+            {formik.touched.directEducation?.[index]?.directEducationTitle && formik.errors.directEducation?.[index]?.directEducationTitle ? (
+              <div className="alert py-1 alert-danger">{formik.errors.directEducation[index].directEducationTitle}</div>
+            ) : null}
+          </div>
+        </div>
+      ))}
+      <div>
+        <p style={{ cursor: 'pointer', color: 'black' }} onClick={() => push({ directEducationTitle: '', Image: null, directEducationURL: '' })}>
+          + أضف جهة تدريب جديدة
+        </p>
+      </div>
+    </>
+  )}
+</FieldArray>
+
     </div>
                     {/* //& Support */}
                     <div className='border p-4 mt-4 rounded-2'>
                     <p style={{ fontSize: '18px' }}> جهة الدعم</p>
 
                     <FieldArray name="supportSide">
-        {({ remove, push }) => (
-          <>
-            {formik.values.supportSide.map((field, index) => (
-              <div key={index} className='row gy-3'>
-                <div className='col-md-3'>
-                 
-                    <div className='pe-2 rounded-2 mb-1' style={{ backgroundColor: 'rgba(247, 247, 247, 1)', height: '60px' }}>
-                    <input
-                      type="file"
-                      accept="image/*"
-                      style={{ display: 'none' }}
-                      onChange={(event) => handleImageChangeImages(event, 'supportSide', index, 'supportSide')}
-                      id={`trainingFieldFile3-${index}`}
-                    />
-                                        <p style={{ cursor: 'pointer', display: 'flex',  alignItems: 'center', height: '100%' }} onClick={() => document.getElementById(`trainingFieldFile3-${index}`).click()}>
-                      {previews.supportSide[index] ? (
-                        <img src={previews.supportSide[index]} alt="Selected" className='m-auto' style={{ height: '100%', objectFit: 'contain' }} />
-                      ) : (
-                        <>
-                          <img src={uploadImage} className='ms-2 mt-3' alt='uploadImage' style={{ height: '100%', objectFit: 'contain' }} />
-                          <span>أضف صورة</span>
-                        </>
-                      )}
-                    </p>
-                  </div>
-                  {formik.touched.supportSide?.[index]?.Image && formik.errors.supportSide?.[index]?.Image ? (
-                    <div className="alert py-1 alert-danger">{formik.errors.supportSide[index].Image}</div>
-                  ) : null}
-                </div>
-                <div className='col-md-9'>
-                  <div className='d-flex px-3 mb-2 rounded-3' style={{ backgroundColor: 'rgba(247, 247, 247, 1)' }}>
-                    <input
-                      type="text"
-                      placeholder=' برنامج النخبة'
-                      className="form-control py-3 border-0"
-                      id={`trainingFieldName-${index}`}
-                      style={{ backgroundColor: 'rgba(247, 247, 247, 1)' }}
-                      {...formik.getFieldProps(`supportSide[${index}].supportSideTitle`)}
-                    />
-                  </div>
-                  {formik.touched.supportSide?.[index]?.supportSideTitle && formik.errors.supportSide?.[index]?.supportSideTitle ? (
-                    <div className="alert py-1 alert-danger">{formik.errors.supportSide[index].supportSideTitle}</div>
-                  ) : null}
-                </div>
-              </div>
-            ))}
-            <div>
-              <p style={{ cursor: 'pointer', color: 'black' }} onClick={() => push({ supportSideTitle: '', Image: null })}>
-                + أضف جهة دعم جديدة
+  {({ remove, push }) => (
+    <>
+      {formik.values.supportSide.map((field, index) => (
+        <div key={index} className='row gy-3'>
+          <div className='col-md-3'>
+            <div className='pe-2 rounded-2 mb-1' style={{ backgroundColor: 'rgba(247, 247, 247, 1)', height: '60px' }}>
+              <input
+                type="file"
+                accept="image/*"
+                style={{ display: 'none' }}
+                onChange={(event) => handleImageChangeImages(event, 'supportSide', index, 'supportSide')}
+                id={`trainingFieldFile3-${index}`}
+              />
+              <p style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', height: '100%' }} onClick={() => document.getElementById(`trainingFieldFile3-${index}`).click()}>
+                {previews.supportSide[index] ? (
+                  <img src={previews.supportSide[index]} alt="Selected" className='m-auto' style={{ height: '100%', objectFit: 'contain' }} />
+                ) : (
+                  <>
+                    <img src={uploadImage} className='ms-2 mt-3' alt='uploadImage' style={{ height: '100%', objectFit: 'contain' }} />
+                    <span>أضف صورة</span>
+                  </>
+                )}
               </p>
             </div>
-          </>
-        )}
-      </FieldArray>
+            {formik.touched.supportSide?.[index]?.Image && formik.errors.supportSide?.[index]?.Image ? (
+              <div className="alert py-1 alert-danger">{formik.errors.supportSide[index].Image}</div>
+            ) : null}
+          </div>
+          <div className='col-md-9'>
+            <div className='d-flex px-3 mb-2 rounded-3' style={{ backgroundColor: 'rgba(247, 247, 247, 1)' }}>
+              <input
+                type="text"
+                placeholder='برنامج النخبة'
+                className="form-control py-3 border-0"
+                id={`trainingFieldName-${index}`}
+                style={{ backgroundColor: 'rgba(247, 247, 247, 1)' }}
+                {...formik.getFieldProps(`supportSide[${index}].supportSideTitle`)}
+              />            <img src={urlIcon} alt='' onClick={() => handleShow3(index)} style={{ cursor: 'pointer' }} />
+
+              <button
+                type="button"
+                onClick={() => remove(index)}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  color: 'red',
+                  cursor: 'pointer',
+                  marginLeft: '10px'
+                }}
+              >
+                حذف
+              </button>
+            </div>
+            {formik.touched.supportSide?.[index]?.supportSideTitle && formik.errors.supportSide?.[index]?.supportSideTitle ? (
+              <div className="alert py-1 alert-danger">{formik.errors.supportSide[index].supportSideTitle}</div>
+            ) : null}
+
+            {formik.touched.supportSide?.[index]?.supportSideUrl && formik.errors.supportSide?.[index]?.supportSideUrl ? (
+              <div className="alert py-1 alert-danger">{formik.errors.supportSide[index].supportSideUrl}</div>
+            ) : null}
+          </div>
+        </div>
+      ))}
+      <div>
+        <p style={{ cursor: 'pointer', color: 'black' }} onClick={() => push({ supportSideTitle: '', Image: null, supportSideUrl: '' })}>
+          + أضف جهة دعم جديدة
+        </p>
+      </div>
+    </>
+  )}
+</FieldArray>
+
                     </div>
                     
                     {/* //& For Cost */}
@@ -775,7 +874,7 @@ const AddNewCertificate = () => {
                                     <i className="fa-solid fa-spinner fa-spin"></i>
                                                 </button>
                                 ):(
-                                      <button  onClick={formik.handleSubmit} type="submit" className='btn text-white rounded-2 py-3 mt-1 w-100' style={{ backgroundColor: 'rgba(31, 42, 68, 1)' }}>
+                                      <button disabled={loading}  onClick={formik.handleSubmit} type="submit" className='btn text-white rounded-2 py-3 mt-1 w-100' style={{ backgroundColor: 'rgba(31, 42, 68, 1)' }}>
                                 إضافة شهادة جديدة
             </button>
                                 )}
@@ -793,7 +892,7 @@ const AddNewCertificate = () => {
                 </div>
 
                 <Modal show={show} onHide={handleClose}>
-                    <Modal.Header closeButton>
+                    <Modal.Header closeButton style={{direction:'ltr'}}>
                         <Modal.Title>Insert Link</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
@@ -806,16 +905,13 @@ const AddNewCertificate = () => {
                         />
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={handleClose}>
-                            Close
-                        </Button>
-                        <Button variant="primary" onClick={() => handleSaveLink(formik.setFieldValue)}>
+                        <Button style={{backgroundColor:'rgba(31, 42, 68, 1)'}} className='w-100' onClick={() => handleSaveLink(formik.setFieldValue)}>
                             Save Link
                         </Button>
                     </Modal.Footer>
                 </Modal>
                 <Modal show={show2} onHide={handleClose2}>
-                    <Modal.Header closeButton>
+                    <Modal.Header closeButton style={{direction:'ltr'}}>
                         <Modal.Title>Insert Link</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
@@ -828,15 +924,32 @@ const AddNewCertificate = () => {
                         />
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={handleClose2}>
-                            Close
-                        </Button>
-                        <Button variant="primary" onClick={() => handleSaveLink2(formik.setFieldValue)}>
+                        <Button style={{backgroundColor:'rgba(31, 42, 68, 1)'}} className='w-100' onClick={() => handleSaveLink2(formik.setFieldValue)}>
                             Save Link
                         </Button>
                     </Modal.Footer>
                 </Modal>
                 
+                <Modal show={show3} onHide={handleClose3}>
+                    <Modal.Header closeButton style={{direction:'ltr'}}>
+                        <Modal.Title>Insert Link</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Enter link here"
+                            value={link3}
+                            onChange={(e) => setLink3(e.target.value)}
+                        />
+                    </Modal.Body>
+                    <Modal.Footer>
+                        
+                        <Button style={{backgroundColor:'rgba(31, 42, 68, 1)'}} className='w-100' onClick={() => handleSaveLink3(formik.setFieldValue)}>
+                            Save Link
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
             </div>
         </FormikProvider>
     );

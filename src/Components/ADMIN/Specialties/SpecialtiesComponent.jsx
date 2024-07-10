@@ -82,15 +82,15 @@ const SpecialtiesComponent = ({id,Img,TypeIcon,Title,Desc,Type}) => {
   
   return (
       <div className='col-md-4 '>
-            <div  className='rounded-4 d-flex align-items-center  text-center position-relative ' style={{height:'250px',backgroundColor:'rgba(247, 247, 247, 1)'}}>
+            <div  className='rounded-4 d-flex align-items-center  text-center position-relative' style={{height:'250px',backgroundColor:'rgba(247, 247, 247, 1)'}}>
                 <div className='' onClick={()=>navigate(`/Admin/MainSpecialties/${id}`)}><img  src={Img} className='m-auto w-75'   alt='img1'/></div>
                 <div className='pb-2'></div>
                 <div className='bg-white p-1 d-flex' style={{border:"1px solid rgba(247, 247, 247, 1)",position:'absolute',top:0,left:0,borderBottomRightRadius:'15px',borderTopLeftRadius:'15px'}}>
                 <div data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <img className='w-50 '  style={{cursor:'pointer'}} src={icon2}   alt='icon2'/>
+                    <img className='w-75 '  style={{cursor:'pointer'}} src={icon2}   alt='icon2'/>
                 </div>
                 <div data-bs-toggle="modal" data-bs-target="#exampleModal2">
-                    <img className='w-50' style={{cursor:'pointer'}} src={icon1}   alt='icon1'/>
+                    <img className='w-75' style={{cursor:'pointer'}} src={icon1}   alt='icon1'/>
                 </div>
                 </div>
             </div>
@@ -107,7 +107,7 @@ const SpecialtiesComponent = ({id,Img,TypeIcon,Title,Desc,Type}) => {
 
   {/* Modal Update */}
   <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div className="modal-dialog">
+    <div className="modal-dialog ">
     <div className="modal-content">
       <form onSubmit={formik.handleSubmit}>
         <div className="modal-body modal-lg">

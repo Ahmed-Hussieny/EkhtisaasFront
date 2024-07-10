@@ -8,11 +8,11 @@ import { MenuItem,Tab, Pagination, Select, Tabs, useMediaQuery } from "@mui/mate
 import { useDispatch } from "react-redux";
 import { HandelGetAllMainSpecialty } from "../../store/SpecialtiesSlice";
 import ProfessionalSpecialties from "../../Components/ProfessionalCertification/ProfessionalSpecialties";
+import { HandelPutCountOfVisitors } from "../../store/AuthSlice";
 
 const ProfessionalCertificationSpecialties = () => {
   const dispatch = useDispatch()
   //^ prepar to show the data from DB
-
   // ^ All Data using After Filter
   const [ScientificData, setScientificData] = useState([]);
   const [HumanAndLiteraryData, setHumanAndLiteraryData] = useState([]);
@@ -61,6 +61,7 @@ const ProfessionalCertificationSpecialties = () => {
       const currentDataForHealthyData = HealthyData.slice((currentPageForHealthyData - 1) * itemsPerPage, currentPageForHumanAndLiteraryData * itemsPerPage);
   // ^ Get All Data
   const GetAllMainSpecialties = async () => {
+    await dispatch(HandelPutCountOfVisitors(3))
     const res = await dispatch(HandelGetAllMainSpecialty());
     const MainData = res.payload.data;
     setMainDataCount(MainData.length)
@@ -79,6 +80,7 @@ const ProfessionalCertificationSpecialties = () => {
 
   useEffect(() => {
     GetAllMainSpecialties();
+    
   }, []);
   return (
     <div className={style.font}>

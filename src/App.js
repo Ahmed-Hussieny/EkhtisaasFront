@@ -39,6 +39,7 @@ import CareerGuidance from './Pages/CareerGuidance/CareerGuidance';
 import MentorDetails from './Pages/CareerGuidance/MentorDetails';
 import SpecialistPage from './Pages/Specialist/SpecialistPage';
 import ShowSpecialistDetails from './Pages/Specialist/ShowSpecialistDetails';
+import ContactWithUs from './Pages/ADMIN/ContactWithUs/ContactWithUs';
 
 function App() {
   let router = createBrowserRouter([
@@ -65,9 +66,11 @@ function App() {
       {path:'Specialist',element:<Specialist/>},
       {path:'AddSpecialist',element:<AddSpecialist/>},
       {path:'ShowSpecialist/:id',element:<ShowSpecialist/>},
+      {path:'ContactWithUs',element:<ContactWithUs/>},
+
 
       
-      
+
 
     ]},
     {path:'',element: <Layout />,children:[

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom';
 import { HandelGetSingleMainSpecialty } from '../../../store/SpecialtiesSlice';
 import searchicon from '../../../Assents/Images/search/Search_alt_light.svg';
 import style from '../../../Assents/Style/search.module.css';
@@ -10,24 +10,24 @@ import { Pagination } from '@mui/material';
 import SpecialtiesSubComponent from '../../../Components/ADMIN/Specialties/SpecialtiesSubComponent';
 
 const MainSpecialties = () => {
-  const {id} = useParams();
+  const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [MainSpecialtyData, setMainSpecialtyData] = useState({});
   const [SubSpecialtyData, setSubSpecialtyData] = useState([]);
+  const [filteredSubSpecialtyData, setFilteredSubSpecialtyData] = useState([]);
+  const [searchInput, setSearchInput] = useState('');
   const [currentPageForScientificData, setCurrentPageForScientificData] = useState(1);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
   const getMainData = async () => {
     try {
       const res = await dispatch(HandelGetSingleMainSpecialty(id));
-      console.log(res.payload);
       setMainSpecialtyData(res.payload.data);
       const subData = res.payload.data.SubSpecialtyies || [];
-      console.log(subData);
       setSubSpecialtyData(Array.isArray(subData) ? subData : [subData]);
-      console.log(SubSpecialtyData);
+      setFilteredSubSpecialtyData(Array.isArray(subData) ? subData : [subData]);
     } catch (error) {
       console.error('Failed to fetch main specialty data:', error);
     } finally {
@@ -40,20 +40,29 @@ const MainSpecialties = () => {
     getMainData();
   }, [id]);
 
+  const handleSearch = (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+    setSearchInput(searchTerm);
+    const filteredData = SubSpecialtyData.filter(item =>
+      item.Title.toLowerCase().includes(searchTerm) 
+    );
+    setFilteredSubSpecialtyData(filteredData);
+  };
+
   const itemsPerPage = 6;
 
   const handlePageChangeForScientificData = (event, value) => {
     setCurrentPageForScientificData(value);
   };
 
-  const currentDataForScientificData = SubSpecialtyData.slice((currentPageForScientificData - 1) * itemsPerPage, currentPageForScientificData * itemsPerPage);
+  const currentDataForScientificData = filteredSubSpecialtyData.slice((currentPageForScientificData - 1) * itemsPerPage, currentPageForScientificData * itemsPerPage);
 
   if (loading) {
     return <div>Loading</div>;
   }
 
   return (
-    <div className={[style.font,"m-0 p-0"].join(" ")}>
+    <div className={[style.font, "m-0 p-0"].join(" ")}>
       <div className='container m-auto gy-3 row d-flex align-items-center'>
         <div className='col-md-2'>
           <p style={{ fontSize: '22px' }}>التخصصات</p>
@@ -65,7 +74,7 @@ const MainSpecialties = () => {
                 <img src={searchicon} alt="search icon" />
               </span>
             </div>
-            <input type="text" className={`${style.input} form-control border-0`} placeholder="ابحث عن ما تريده هنا" aria-label="Search" />
+            <input type="text" className={`${style.input} form-control border-0`} placeholder="ابحث عن ما تريده هنا" aria-label="Search" value={searchInput} onChange={handleSearch} />
           </div>
         </div>
         <div className='col-md-2'>
@@ -108,7 +117,7 @@ const MainSpecialties = () => {
             </div>
             <div className='d-flex justify-content-center my-5'>
               <Pagination
-                count={Math.ceil(SubSpecialtyData.length / itemsPerPage)}
+                count={Math.ceil(filteredSubSpecialtyData.length / itemsPerPage)}
                 page={currentPageForScientificData}
                 onChange={handlePageChangeForScientificData}
                 variant="outlined"
@@ -122,12 +131,11 @@ const MainSpecialties = () => {
             <Pagination count={0} variant="outlined" className='text-danger' shape="rounded" />
           </div>
         )}
-       
       </div>
       <div className='m-0 p-0'>
-      <div className='text-start ms-5'>
-        <button onClick={() => navigate(`/Admin/AddNewSubSpecialties/${MainSpecialtyData.Title}`)} className='btn text-white ms-auto rounded-4 mt-1 px-5 py-3 mb-5' style={{ backgroundColor: 'rgba(31, 42, 68, 1)' }}>+ اضافة تخصص فرعي</button>
-      </div>
+        <div className='text-start ms-5'>
+          <button onClick={() => navigate(`/Admin/AddNewSubSpecialties/${MainSpecialtyData.Title}`)} className='btn text-white ms-auto rounded-4 mt-1 px-5 py-3 mb-5' style={{ backgroundColor: 'rgba(31, 42, 68, 1)' }}>+ اضافة تخصص فرعي</button>
+        </div>
       </div>
     </div>
   );

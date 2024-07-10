@@ -30,14 +30,19 @@ const ShowSpecialistDetails = () => {
     const {id} = useParams()
     const dispatch = useDispatch()
     const [Specialist,setSpecialist] = useState([])
+    const [servicesDetails,setServicesDetails] = useState("")
     const getSpecialist = async()=>{
         const res = await dispatch(HandelGetSingleSpecialist(id))
         console.log(res);
         setSpecialist(res.payload.data)
+        setServicesDetails(convertToArray(res.payload.data.Services))
     }
     useEffect(()=>{
         getSpecialist()
     },[])
+    const convertToArray = (inputString) => {
+      return inputString.split(',').map(word => word.trim());
+    };
     const renderStars = (rate) => {
         return Array.from({ length: rate }, (_, index) => (
           <span key={index} role="img" aria-label="star">⭐</span>
@@ -54,7 +59,7 @@ const ShowSpecialistDetails = () => {
       <div className='row my-5 mx-0 p-4 d-flex align-items-center'>
       <div className='col-md-5 ' >
       <div className='rounded-3 position-relative'>
-        <img src={Specialist.Image.secure_url} alt={`${Specialist.name}`} className='rounded-3 w-100' />
+        <img src={Specialist?.Image?.secure_url} alt={`${Specialist.name}`} className='rounded-3 w-100' />
         <div style={{position:'absolute',top:0,left:0}}>
         <div  style={{backgroundColor:getBorderColor(Specialist.Category),borderTopLeftRadius:'15px',borderBottomRightRadius:'15px'}}>
         <p style={{fontSize:'15px'}} className='px-4 text-white py-1'>{Specialist.Category}</p>
@@ -114,27 +119,34 @@ const ShowSpecialistDetails = () => {
           </div>
           <div className=' col-md-10'>
           <div className=' row'>
-            <div className='col-md-4'>
+          {servicesDetails.includes("الإرشاد المهني")?
+            <div className={`col-md-${12/servicesDetails.length}`}>
               <div className='p-3 text-center shadow'>
                 <img src={iconline1} alt='iconline1'/>
                 <p style={{fontSize:'16px',fontWeight:'bold'}}>الإرشاد المهني</p>
               </div>
               
             </div>
-            <div className='col-md-4'>
+            :""}
+            {servicesDetails.includes("تعديل ملف اللينكدين")?
+              <div className={`col-md-${12/servicesDetails.length}`}>
               <div className='p-3 text-center shadow'>
                 <img src={iconline2} alt='iconline1'/>
                 <p style={{fontSize:'16px',fontWeight:'bold'}}> تعديل ملف اللينكدين</p>
               </div>
               
             </div>
-            <div className='col-md-4'>
+            :""}
+            {servicesDetails.includes("كتابة السيرة الذاتية")?
+              <div className={`col-md-${12/servicesDetails.length}`}>
               <div className='p-3 text-center shadow'>
                 <img src={iconline3} alt='iconline1'/>
                 <p style={{fontSize:'16px',fontWeight:'bold'}}>كتابة السيرة الذاتية</p>
               </div>
               
             </div>
+            :""}
+            
           </div>
           </div>
           <div className='col-md-1 p-0 m-0  text-start'>

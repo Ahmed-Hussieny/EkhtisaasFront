@@ -69,7 +69,7 @@ const ProfessionalCertification = () => {
     const handlePageChangeForScientificData = (event, value) => {
       setCurrentPageForScientificData(value);
     };
-    const currentCertificateData = CertificateData.slice((currentPageForScientificData - 1) * itemsPerPage, currentPageForScientificData * itemsPerPage);
+    const currentCertificateData = CertificateData?.slice((currentPageForScientificData - 1) * itemsPerPage, currentPageForScientificData * itemsPerPage);
 
   return (
     <>
@@ -106,7 +106,7 @@ const ProfessionalCertification = () => {
       </div>
       {/* third section */}
       <div>
-        {currentCertificateData.length > 0 ? (
+        {currentCertificateData?.length > 0 ? (
           <>
             <div className='row m-0 gy-3 px-lg-5'>
               {currentCertificateData.map((el) => (
@@ -142,62 +142,8 @@ const ProfessionalCertification = () => {
         </div>
     </div>
 
-{/*  section 5 */}
-    <div className='mt-4'>
-      <p style={{fontSize:'28px',color:'rgba(70, 70, 70, 1)'}}>صعوبة الشهادة</p>
-      <p className='pe-3' style={{fontSize:'22px',color:'rgba(101, 101, 101, 1)'}}>تصنف صعوبة الشهادة حسب ثلاث مستويات مبتدئ، متوسط وعالي</p>
-    </div>
-    <div className='px-3'>
-        <div className='row m-0 gy-3 mt-5'>
-        {/* one */}
-          <div className='col-md-4 text-center'>
-            <div className='position-relative d-flex justify-content-center align-items-center'>
-            <img src={imageDown1} alt='imageDown1'/>
-              <div style={{position:'absolute',top:-10}}>
-                <img src={imageUp1} alt='imageUp1'/>
-              </div>
-              <div className='' style={{position:'absolute',top:'30%'}}>
-                <p>مبتدئ</p>
-              </div>
-            </div>
-            <div className='text-center px-lg-5 pt-4'>
-              <p style={{fontSize:'18px',color:"rgba(101, 101, 101, 1)"}}>تهتم بالاساسيات وتعتبر بمثابة مدخل الي العلم، لا تتطلب اي خبرات. </p>
-            </div>
-          </div>
-          {/* two */}
-          <div className='col-md-4 text-center'>
-            <div className='position-relative d-flex justify-content-center align-items-center'>
-            <img src={imageDown2} alt='imageDown2'/>
-              <div style={{position:'absolute',top:-10}}>
-                <img src={imageUp2} alt='imageUp2'/>
-              </div>
-              <div className='' style={{position:'absolute',top:'30%'}}>
-                <p>متوسط</p>
-              </div>
-            </div>
-            <div className='text-center px-lg-5 pt-4'>
-              <p style={{fontSize:'18px',color:"rgba(101, 101, 101, 1)"}}>تهتم بالاساسيات وتعتبر بمثابة مدخل الي العلم، لا تتطلب اي خبرات.  </p>
-            </div>
-          </div>
-          {/* Three */}
-          <div className='col-md-4 text-center'>
-            <div className='position-relative d-flex justify-content-center align-items-center'>
-            <img src={imageDown3} alt='imageDown3'/>
-              <div style={{position:'absolute',top:-10}}>
-                <img src={imageUp3} alt='imageUp3'/>
-              </div>
-              <div className='' style={{position:'absolute',top:'30%'}}>
-                <p>عالي</p>
-              </div>
-            </div>
-            <div className='text-center px-lg-5 pt-4'>
-              <p style={{fontSize:'18px',color:"rgba(101, 101, 101, 1)"}}>تهتم بالاساسيات وتعتبر بمثابة مدخل الي العلم، لا تتطلب اي خبرات. </p>
-            </div>
-          </div>
-        </div>
-    </div>
 
-    {/* section 6 */}
+    {/* section 7 */}
     <div className='mt-5'>
     <img src={icon5} alt='icon5'/>
       <p style={{fontSize:'28px',color:'rgba(70, 70, 70, 1)'}}> مستوي الشهادة</p>

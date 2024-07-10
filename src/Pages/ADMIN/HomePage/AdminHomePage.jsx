@@ -1,11 +1,55 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import AdminHomePageNumbers from '../../../Components/ADMIN/AdminHomePage/AdminHomePageNumbers'
 import { LineChart, lineElementClasses, markElementClasses } from '@mui/x-charts/LineChart';
 import { BarChart } from '@mui/x-charts';
 import style from  '../../../Assents/Style/Auth.module.css'
+import { useDispatch } from 'react-redux';
+import { HandelGetCountOfVisitors } from '../../../store/AuthSlice';
+import { HandelGetAllCertificate } from '../../../store/CertificateSlice';
+import { HandelGetAllMainSpecialty, HandelGetAllSubSpecialty } from '../../../store/SpecialtiesSlice';
+import { HandelGetAllAdvisors } from '../../../store/AdvisorSlice';
+import { HandelGetAllSpecialists } from '../../../store/SpecialistSlice';
 const AdminHomePage = () => {
 
+  const dispatch = useDispatch()
+  const [CountOfVisitors,setCountOfVisitors] = useState(0)
+  const [organizationCount , setOrganizationCount] = useState(0)
+  const [numberOfMainSpeciality , setNumberOfMainSpeciality] = useState(0)
+  const [numberOfPages , setNumberOfPages] = useState(21)
+  const [pageData,setPageData] = useState({})
 
+  const countOrganizations = (data) => {
+    console.log('Data received:', data);
+  
+    if (!Array.isArray(data)) {
+      console.error('Data is not an array');
+      return;
+    }
+  
+    const uniqueOrganizations = new Set(data.map(item => item.organizationName));
+    setOrganizationCount(uniqueOrganizations.size);
+  };
+  
+  const GetCountOfVisitors = async ()=>{
+    const res = await dispatch(HandelGetCountOfVisitors())
+    console.log(res.payload);
+    setPageData(res.payload.data)
+    console.log(pageData);
+    const res1 = await dispatch(HandelGetAllCertificate())
+      console.log(res1.payload);
+      countOrganizations(res1.payload.data)
+      const res2 = await dispatch(HandelGetAllMainSpecialty())
+      const res3 = await dispatch(HandelGetAllSubSpecialty())
+      const MainCount = res2.payload.data.length + res3.payload.data.length
+      setNumberOfMainSpeciality(MainCount)
+    setCountOfVisitors(res.payload.data.countOfVisitors)
+    const res4 = await dispatch(HandelGetAllAdvisors())
+    const res5 = await dispatch(HandelGetAllSpecialists())
+    setNumberOfPages(21+(res3.payload.data.length)?res3.payload.data.length:0 + numberOfMainSpeciality+(res1.payload.data.length)?res1.payload.data.length:0,(res4.payload.data.length)?res4.payload.data.length:0+(res5.payload.data.length)?res5.payload.data.length:0)
+  }
+  useEffect(()=>{
+    GetCountOfVisitors()
+  },[])
   return (
       <div className={[style.font,'mt-5 px-5'].join(" ")}>
         <p style={{fontSize:'22px'}}>الرئيسية</p>
@@ -14,22 +58,22 @@ const AdminHomePage = () => {
         <div className='mt-4 gy-3 row m-0'>
         <div className='col-md-3' >
           <div className='rounded-4' style={{backgroundColor:'rgba(240, 250, 255, 1)'}}>
-            <AdminHomePageNumbers  Text={"عدد الزوار الحاليين"} number={657}/>
+            <AdminHomePageNumbers  Text={"عدد الزوار الحاليين"} number={pageData.countOfVisitors}/>
           </div>
         </div>
         <div className='col-md-3' >
         <div className='rounded-4' style={{backgroundColor:'rgba(240, 250, 255, 1)'}}>
-            <AdminHomePageNumbers  Text={"عدد الزوار الحاليين"} number={657}/>
+            <AdminHomePageNumbers  Text={"  عدد الصفحات الحالية"} number={numberOfPages}/>
           </div>
         </div>
         <div className='col-md-3' >
         <div className='rounded-4' style={{backgroundColor:'rgba(240, 250, 255, 1)'}}>
-            <AdminHomePageNumbers  Text={"عدد الزوار الحاليين"} number={657}/>
+            <AdminHomePageNumbers  Text={"عدد المنظمات الحالية"} number={organizationCount}/>
           </div>
         </div>
         <div className='col-md-3' >
           <div className='rounded-4' style={{backgroundColor:'rgba(240, 250, 255, 1)'}}>
-            <AdminHomePageNumbers  Text={"عدد الزوار الحاليين"} number={657}/>
+            <AdminHomePageNumbers  Text={"عدد التخصصات الحالية"} number={numberOfMainSpeciality}/>
           </div>
         </div>
         
@@ -56,7 +100,7 @@ const AdminHomePage = () => {
   xAxis={[{ disableLine: true, disableTicks: true, scaleType: 'band', data: ['الرئيسية', 'خدماتنا', 'التخصصات', 'الشهادات', 'من نحن', 'تواصل معنا'] }]}
   series={[
     {
-      data: [4, 3, 5, 2, 6, 4],
+      data: [pageData.Homepage, pageData.OurServises, pageData.Specialties, pageData.Certificates, pageData.AboutUs, pageData.ContactWithUS],
       color:['#8884d8', '#83a6ed', '#8dd1e1', '#82ca9d', '#a4de6c', '#d0ed57'],
     },
     

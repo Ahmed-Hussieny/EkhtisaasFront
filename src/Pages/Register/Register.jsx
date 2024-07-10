@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "../../Assents/Style/Auth.module.css";
 import logo from "../../Assents/Images/Auth/logo (2).png";
 import ArrowTop from "../../Assents/Images/Auth/ArrowTop.png";
@@ -98,6 +98,9 @@ const Register = () => {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+  useEffect(()=>{
+    console.log(process.env.REACT_APP_BASE_URL);
+  },[])
   return (
     <div>
       <div className="m-0 p-0">

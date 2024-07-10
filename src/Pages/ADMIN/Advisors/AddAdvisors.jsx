@@ -56,10 +56,10 @@ const AddAdvisors = () => {
       experienceDescription: Yup.string().required("هذا الحقل مطلوب"),
       contentcareer: Yup.string().required("هذا الحقل مطلوب"),
       PriceOfCareerCounselingSession: Yup.string().required("هذا الحقل مطلوب"),
-      email: Yup.string().required("هذا الحقل مطلوب"),
-      linkedIn: Yup.string().url("Invalid URL").required("هذا الحقل مطلوب"),
-      X: Yup.string().url("Invalid URL").required("هذا الحقل مطلوب"),
-      website: Yup.string().url("Invalid URL").required("هذا الحقل مطلوب"),
+      email: Yup.string(),
+      linkedIn: Yup.string().url("Invalid URL"),
+      X: Yup.string().url("Invalid URL"),
+      website: Yup.string().url("Invalid URL"),
       Rate: Yup.number().required("هذا الحقل مطلوب"),
     }),
     onSubmit: AddCertificate,
@@ -486,7 +486,7 @@ const AddAdvisors = () => {
     <div className='row'>
                             <div className='col-md-6'></div>
                             <div className='col-md-6'>
-                                <div className='row'>
+                                <div className='row mb-5'>
                                 <div className='col-md-6'>
                                 {loading ?(
                                     <button type="button" className='btn text-white rounded-2 py-3 mt-1 w-100' style={{ backgroundColor: 'rgba(40, 42, 68, 1)' }}>
@@ -494,7 +494,7 @@ const AddAdvisors = () => {
                                                 </button>
                                 ):(
                                       <button  onClick={formik.handleSubmit} type="submit" className='btn text-white rounded-2 py-3 mt-1 w-100' style={{ backgroundColor: 'rgba(31, 42, 68, 1)' }}>
-                                إضافة شهادة جديدة
+                                إضافة مرشد جديد
             </button>
                                 )}
                               

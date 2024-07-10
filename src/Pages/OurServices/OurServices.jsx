@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import style from '../../Assents/Style/OurServices.module.css'
 import icon1 from '../../Assents/Images/OurServices/Group 89.svg'
 import img1 from '../../Assents/Images/OurServices/Circle Stroke 1.svg'
@@ -8,8 +8,18 @@ import img22 from '../../Assents/Images/OurServices/bro.svg'
 import img13 from '../../Assents/Images/OurServices/Circle Stroke 3.png'
 import img23 from '../../Assents/Images/OurServices/bro2.svg'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { HandelPutCountOfVisitors } from '../../store/AuthSlice'
 const OurServices = () => {
   const navigate = useNavigate()
+  const dispatch =useDispatch()
+  const putPageCount = async()=>{
+        await dispatch(HandelPutCountOfVisitors(2))
+
+  }
+  useEffect(()=>{
+    putPageCount()
+  },[])
   return (
     <div className={style.font}>
         <div className={style.bgImage}>

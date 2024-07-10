@@ -7,7 +7,7 @@ export const HandelAddAdvisor = createAsyncThunk(
   async (formData) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/Advisor/AddAdvisor",
+        `${process.env.REACT_APP_BASE_URL}/Advisor/AddAdvisor`,
         formData,
         {
           headers: {
@@ -30,7 +30,7 @@ export const HandelUpdateAdvisor = createAsyncThunk(
         let body = formdata
       try {
         const response = await axios.put(
-          `http://localhost:3000/Advisor/updateAdvisor/${id}`,
+         `${process.env.REACT_APP_BASE_URL}/Advisor/updateAdvisor/${id}`,
           body,
           {
             headers: {
@@ -52,7 +52,7 @@ export const HandeldeleteAdvisor = createAsyncThunk(
     async (id) => {
       try {
         const response = await axios.delete(
-          `http://localhost:3000/Advisor/deleteAdvisor/${id}`,
+          `${process.env.REACT_APP_BASE_URL}/Advisor/deleteAdvisor/${id}`,
           {
             headers: {
               accessToken: "prefixToken_" + localStorage.getItem("Token"),
@@ -73,12 +73,13 @@ export const HandelGetAllAdvisors = createAsyncThunk(
     async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/Advisor/GetAllAdvisors",
-          {
-            headers: {
-              accessToken: "prefixToken_" + localStorage.getItem("Token"),
-            },
-          }
+          `${process.env.REACT_APP_BASE_URL}/Advisor/GetAllAdvisors`
+          // ,
+          // {
+          //   headers: {
+          //     accessToken: "prefixToken_" + localStorage.getItem("Token"),
+          //   },
+          // }
         );
   
         return response.data;
@@ -94,12 +95,13 @@ export const HandelGetSingleAdvisor = createAsyncThunk(
     async (id) => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/Advisor/GetSingleAdvisor/${id}`,
-          {
-            headers: {
-              accessToken: "prefixToken_" + localStorage.getItem("Token"),
-            },
-          }
+          `${process.env.REACT_APP_BASE_URL}/Advisor/GetSingleAdvisor/${id}`
+          // ,
+          // {
+          //   headers: {
+          //     accessToken: "prefixToken_" + localStorage.getItem("Token"),
+          //   },
+          // }
         );
   
         return response.data;

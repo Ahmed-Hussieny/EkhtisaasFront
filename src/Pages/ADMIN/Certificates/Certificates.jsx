@@ -154,7 +154,7 @@ const GetAllMainSpecialty =async()=>{
         })}
       </div>:
       <div className='text-center my-5'> 
-        <img src={EmptyImage} alt='EmptyImage'/>
+        <img className='w-75' src={EmptyImage} alt='EmptyImage'/>
         <p>
         اختر التخصصات اولا
         </p>

@@ -30,6 +30,10 @@ const MentorDetails = () => {
           <span key={index} role="img" aria-label="star">⭐</span>
         ));
       };
+      const openEmail = (recipient, subject, body) => {
+        const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = mailtoLink;
+      };
   return (
     <div className={style.font}>
       <div className='container'>
@@ -176,17 +180,26 @@ const MentorDetails = () => {
         </div>
         <div className='text-center m-auto mb-5 pb-5'>
             <div className='d-flex px-lg-5 m-auto justify-content-center align-items-center'>
-            <div className='ms-4'>
+            <div style={{cursor:'pointer'}} onClick={() => openEmail(AdvisorData.email, 'Hello!', 'I wanted to reach out and say hello.')} className='ms-4 d-flex justify-content-center align-items-center'>
               <img src={icon1} alt='Email icon' />
             </div>
             <div className='ms-4'>
+            <a style={{textDecoration:'none',color:'black',cursor:'pointer'}} href={`${AdvisorData.linkedIn}`}  className="d-flex align-items-center" target='_blank' rel="noreferrer">
+
               <img src={icon2} alt='LinkedIn icon' />
+</a>
             </div>
             <div className='ms-4'>
+            <a style={{textDecoration:'none',color:'black',cursor:'pointer'}} href={`${AdvisorData.X}`}  className="d-flex align-items-center" target='_blank' rel="noreferrer">
+
               <img src={icon3} alt='X (Twitter) icon' />
+              </a>
             </div>
             <div className='ms-4'>
-              <img src={icon4} alt='Website icon' />
+            <a style={{textDecoration:'none',color:'black',cursor:'pointer'}} href={`${AdvisorData.website}`}  className="d-flex align-items-center" target='_blank' rel="noreferrer">
+            <img src={icon4} alt='Website icon' />
+</a>
+              
             </div>
           </div>
         </div>
