@@ -33,7 +33,7 @@ const Advisors = () => {
     {/* //& List Data */}
     <div>
         <div className='row gy-3 m-0 mt-5'>
-        {Advisors.map((el)=>{
+        {Advisors?.map((el)=>{
             return <AdvisorsComponent Image={el.Image.secure_url} id={el._id} Name={el.name} Rate={el.Rate} Description={el.Description} Email={el.email} LinkedIn={el.linkedIn} X={el.X} website={el.website}/>
         })}
         </div>
