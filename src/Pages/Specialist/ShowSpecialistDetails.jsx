@@ -160,7 +160,7 @@ const ShowSpecialistDetails = () => {
         <div className="d-flex mt-5 justify-content-center  align-items-center">
           <div className='text-center'>
             <p style={{ fontSize: "30px", fontWeight: 500 }}>
-            التكلفة التقريبية لجلسة الإرشاد المهني
+            التكلفة التقريبية   لكتابة السيرة الذاتية
             </p>
             <div className='row m-0'>
             <div className='col-md-6'>
