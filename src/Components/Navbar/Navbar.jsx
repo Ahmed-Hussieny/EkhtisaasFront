@@ -60,7 +60,7 @@ const Navbar = () => {
               </li>
               <li className={["nav-item"].join(" ")}>
                 <NavLink                   activeClassName={style.activeNavLink}
- className={[style.navLink,"nav-link"].join(" ")} to="/">
+ className={[style.navLink,"nav-link"].join(" ")} to="/Admin">
                   <span>انشاء حساب / تسجيل دخول</span>
                 </NavLink>
               </li>

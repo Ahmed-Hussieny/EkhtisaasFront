@@ -55,7 +55,7 @@ const AdminHomePage = () => {
         setNumberOfMainSpeciality(totalSpecialtyCount);
         
         // Update count of visitors
-        setCountOfVisitors(visitorsData.countOfVisitors);
+        setCountOfVisitors(visitorsData?.countOfVisitors);
         
         // Get all advisors and specialists
         const [resAdvisors, resSpecialists] = await Promise.all([
@@ -66,8 +66,8 @@ const AdminHomePage = () => {
         const specialistsCount = resSpecialists.payload.data.length;
         
         // Calculate the number of pages
-        const numberOfPages =21+ totalSpecialtyCount + certificatesData.length + advisorsCount + specialistsCount;
-        setNumberOfPages(numberOfPages);
+        const numberOfPages = (totalSpecialtyCount)?totalSpecialtyCount:0 + (certificatesData.length)?certificatesData.length:0 + (advisorsCount)?advisorsCount:0 + (specialistsCount)?specialistsCount:0;
+        setNumberOfPages(numberOfPages+21);
     } catch (error) {
         console.error('Error fetching data:', error);
     }
