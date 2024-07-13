@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { HandelDeleteSubSpecialty, HandelDeleteMainSpecialty } from '../../../store/SpecialtiesSlice'
+import { HandelDeleteSubSpecialty } from '../../../store/SpecialtiesSlice'
 
 const DeleteSubModel = ({id}) => {
   const dispatch = useDispatch()

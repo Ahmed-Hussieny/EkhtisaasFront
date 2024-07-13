@@ -30,7 +30,7 @@ const ProfessionalCertificationComponent = ({ id,Title, Description, Level, Imag
     <div className='mt-5 mb-3 text-center'>
         <p>شعار المنظمة</p>
         <div>
-        <img className='w-50' src={Image} alt={Title} />
+        <img style={{height:'200px',}} className='w-50' src={Image} alt={Title} />
         </div>
     </div>
     </div>

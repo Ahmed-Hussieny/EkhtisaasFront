@@ -10,13 +10,6 @@ import ArrowIcon from '../../Assents/Images/ProfessionalCertification/Group 52.s
 import { Pagination } from '@mui/material';
 import ProfessionalCertificationComponent from '../../Components/ProfessionalCertification/ProfessionalCertificationComponent';
 import icon4 from '../../Assents/Images/ProfessionalCertification/Group 91.svg'
-import imageUp1 from '../../Assents/Images/ProfessionalCertification/Rectangle 2703.svg'
-import imageDown1 from '../../Assents/Images/ProfessionalCertification/Rectangle 2704.png'
-import imageUp2 from '../../Assents/Images/ProfessionalCertification/Rectangle 2706.svg'
-import imageDown2 from '../../Assents/Images/ProfessionalCertification/Rectangle 2705.svg'
-import imageUp3 from '../../Assents/Images/ProfessionalCertification/Rectangle 2706 (1).svg'
-import imageDown3 from '../../Assents/Images/ProfessionalCertification/Rectangle 2705 (1).svg'
-
 import imageUp11 from '../../Assents/Images/ProfessionalCertification/Ellipse 175B1.svg'
 import imageDown11 from '../../Assents/Images/ProfessionalCertification/Ellipse 172U1.svg'
 import imageUp22 from '../../Assents/Images/ProfessionalCertification/Ellipse 176B2.svg'

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import AdminHomePageNumbers from '../../../Components/ADMIN/AdminHomePage/AdminHomePageNumbers'
-import { LineChart, lineElementClasses, markElementClasses } from '@mui/x-charts/LineChart';
+import { LineChart } from '@mui/x-charts/LineChart';
 import { BarChart } from '@mui/x-charts';
 import style from  '../../../Assents/Style/Auth.module.css'
 import { useDispatch } from 'react-redux';
@@ -12,7 +12,6 @@ import { HandelGetAllSpecialists } from '../../../store/SpecialistSlice';
 const AdminHomePage = () => {
 
   const dispatch = useDispatch()
-  const [CountOfVisitors,setCountOfVisitors] = useState(0)
   const [organizationCount , setOrganizationCount] = useState(0)
   const [numberOfMainSpeciality , setNumberOfMainSpeciality] = useState(0)
   const [numberOfPages , setNumberOfPages] = useState(21)
@@ -54,8 +53,6 @@ const AdminHomePage = () => {
         const totalSpecialtyCount = mainSpecialtyCount + subSpecialtyCount;
         setNumberOfMainSpeciality(totalSpecialtyCount);
         
-        // Update count of visitors
-        setCountOfVisitors(visitorsData?.countOfVisitors);
         
         // Get all advisors and specialists
         const [resAdvisors, resSpecialists] = await Promise.all([
