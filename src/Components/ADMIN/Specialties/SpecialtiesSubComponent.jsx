@@ -7,9 +7,11 @@ import { useNavigate } from 'react-router-dom'
 const SpecialtiesSubComponent = ({id,Img,MainTitle,TypeIcon,Title,Desc,Type}) => {
     return (
         <div className='col-md-4 bg'>
-              <div className='rounded-4 text-center d-flex align-items-center position-relative pb-' style={{height:'250px',backgroundColor:'rgba(247, 247, 247, 1)'}}>
-              <img src={Img} className='m-auto w-75'   alt='img1'/>
-                  
+              <div className='rounded-4 text-center justify-content-center d-flex align-items-center position-relative pb-' style={{height:'250px',backgroundColor:'rgba(247, 247, 247, 1)'}}>
+                  <div className='d-flex   align-items-center'>
+                  <img style={{height:'200px'}} src={Img} className='m-auto w-75'   alt='img1'/>
+
+                  </div>                  
                   <div className='bg-white p-1 d-flex' style={{border:"1px solid rgba(247, 247, 247, 1)",position:'absolute',top:0,left:0,borderBottomRightRadius:'15px',borderTopLeftRadius:'15px'}}>
                   <div data-bs-toggle="modal" data-bs-target="#exampleModal">
                       <img className='w-50'  style={{cursor:'pointer'}} src={icon2}   alt='icon2'/>

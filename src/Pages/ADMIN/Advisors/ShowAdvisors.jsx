@@ -57,11 +57,11 @@ const ShowAdvisors = () => {
       experienceDescription: Yup.string().required("هذا الحقل مطلوب"),
       contentcareer: Yup.string().required("هذا الحقل مطلوب"),
       PriceOfCareerCounselingSession: Yup.string().required("هذا الحقل مطلوب"),
-      email: Yup.string().required("هذا الحقل مطلوب"),
-      linkedIn: Yup.string().url("Invalid URL").required("هذا الحقل مطلوب"),
-      X: Yup.string().url("Invalid URL").required("هذا الحقل مطلوب"),
-      website: Yup.string().url("Invalid URL").required("هذا الحقل مطلوب"),
-      Rate: Yup.number().required("هذا الحقل مطلوب"),
+      email: Yup.string(),
+      linkedIn: Yup.string().url("Invalid URL"),
+      X: Yup.string().url("Invalid URL"),
+      website: Yup.string().url("Invalid URL"),
+      Rate: Yup.number(),
     }),
     onSubmit: UpdateAdvisor,
   });
@@ -86,6 +86,7 @@ const ShowAdvisors = () => {
         console.log(res.payload);
         if(res.payload.success){
             toast.success(res.payload.message)
+            navigate(-1)
         }else{
             toast.error(res.payload.data.message)
         }

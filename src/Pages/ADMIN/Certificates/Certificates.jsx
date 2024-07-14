@@ -102,8 +102,18 @@ const GetAllMainSpecialty =async()=>{
           </button>
         <ul className={["dropdown-menu position- w-100 border-0  "].join(" ")}>
         {MainSpecialty?.map((el)=>{
-          return  <li><a key={el._id} className={[style.input ,style.smMargine,"dropdown-item", "form-control"].join(" ")} href="#" onClick={() => handleOptionClickMainSpecialty(el._id,el.Title)}>{el.Title}</a></li>
-        })}
+          return (
+  <li key={el._id}>
+    <div
+      className={[style.input, style.smMargine, "dropdown-item", "form-control"].join(" ")}
+      onClick={(e) => {
+        handleOptionClickMainSpecialty(el._id, el.Title);
+      }}
+    >
+      {el.Title}
+    </div>
+  </li>
+);        })}
         </ul>
       </div>
       {CertificatesMainForm.touched.MainSpecialty && CertificatesMainForm.errors.MainSpecialty ? (
@@ -128,7 +138,18 @@ const GetAllMainSpecialty =async()=>{
         <ul className={["dropdown-menu position- w-100 border-0  "].join(" ")}>
         
         {SubSpecialty?.map((el)=>{
-          return <li><a className={[style.input ,style.smMargine,"dropdown-item", "form-control"].join(" ")} href="#" onClick={() => handleOptionClickSubSpecialty(el._id,el.Title)}>{el.Title}</a></li>
+          return (
+  <li key={el._id}>
+    <div
+      className={[style.input, style.smMargine, "dropdown-item", "form-control"].join(" ")}
+      onClick={(e) => {
+        handleOptionClickSubSpecialty(el._id, el.Title);
+      }}
+    >
+      {el.Title}
+    </div>
+  </li>
+);
         })}
         </ul>
       </div>

@@ -190,11 +190,11 @@ const ContactUs = () => {
                     </li>
                     <li onClick={() => openEmail(pageData.Email, 'Hello!', 'I wanted to reach out and say hello.')} className=' d-flex  align-items-center'>
 
-                      <div >
+                      <div style={{cursor:'pointer'}}>
                         <img src={icon4} alt="Email" />
                       </div>
                       <div>
-                        <p className="pt-3 me-4">Ekthisaas@gmail.com</p>
+                        <p className="pt-3 me-4">{pageData.Email}</p>
                       </div>
                      
                     </li>

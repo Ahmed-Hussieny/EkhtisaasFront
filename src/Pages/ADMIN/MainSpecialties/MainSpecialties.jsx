@@ -84,7 +84,7 @@ const MainSpecialties = () => {
       <div className='px-3 mt-5'>
         <div className='row gy-3 align-items-center'>
           <div className='col-md-5 text-center'>
-            <img src={MainSpecialtyData?.Image?.secure_url} className='w-75' alt=''/>
+            <img  style={{height:'200px'}} src={MainSpecialtyData?.Image?.secure_url} className='w-75' alt=''/>
           </div>
           <div className='col-md-7'>
             <div className='d-flex align-items-center'>

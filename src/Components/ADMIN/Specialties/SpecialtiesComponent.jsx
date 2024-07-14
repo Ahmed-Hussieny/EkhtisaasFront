@@ -11,6 +11,7 @@ import { MenuItem, Select } from '@mui/material'
 import typeIcon1 from '../../../Assents/Images/ProfessionalCertification/Beaker.svg'
 import typeIcon2 from '../../../Assents/Images/ProfessionalCertification/Atom.svg'
 import typeIcon3 from '../../../Assents/Images/ProfessionalCertification/Telecope.svg'
+import toast, { Toaster } from 'react-hot-toast';
 
 // Yup validation schema
 const validationSchema = Yup.object({
@@ -46,7 +47,6 @@ const SpecialtiesComponent = ({id,Img,TypeIcon,Title,Desc,Type}) => {
   // ^Handel Update
   const fileInputRef = useRef(null);
 
-  const [ErrorMessage , setErrorMessage] = useState("")
   const formik = useFormik({
     initialValues: {
       title: Title || '',
@@ -66,7 +66,9 @@ const SpecialtiesComponent = ({id,Img,TypeIcon,Title,Desc,Type}) => {
     formData.append('Image', values.image);
     const res = await dispatch(HandelUpdateMainSpecialty({formData,id}))
     if(res.payload.success === true){
-      setErrorMessage(res.payload.message);
+      toast.success(res.payload.message);
+    }else{
+      toast.error(res.payload.data.message);
     }
   }
   const handleButtonClick = () => {
@@ -82,8 +84,26 @@ const SpecialtiesComponent = ({id,Img,TypeIcon,Title,Desc,Type}) => {
   
   return (
       <div className='col-md-4 '>
-            <div  className='rounded-4 d-flex align-items-center  text-center position-relative' style={{height:'250px',backgroundColor:'rgba(247, 247, 247, 1)'}}>
-                <div className='' onClick={()=>navigate(`/Admin/MainSpecialties/${id}`)}><img  src={Img} className='m-auto w-75'   alt='img1'/></div>
+        <Toaster
+  toastOptions={{
+    success: {
+      style: {
+        background: 'green',
+        color:'white',
+        fontWeight:'bold'
+      },
+    },
+    error: {
+      style: {
+        background: '#951233',
+        color:'white',
+        fontWeight:'bold'
+      },
+    },
+  }}
+/>
+            <div  className='rounded-4 d-flex justify-content-center align-items-center  text-center position-relative ' style={{height:'250px',backgroundColor:'rgba(247, 247, 247, 1)'}}>
+                <div className='d-flex  align-content-center' onClick={()=>navigate(`/Admin/MainSpecialties/${id}`)}><img   style={{height:'200px'}}  src={Img} className='m-auto w-75'   alt='img1'/></div>
                 <div className='pb-2'></div>
                 <div className='bg-white p-1 d-flex' style={{border:"1px solid rgba(247, 247, 247, 1)",position:'absolute',top:0,left:0,borderBottomRightRadius:'15px',borderTopLeftRadius:'15px'}}>
                 <div data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -115,10 +135,7 @@ const SpecialtiesComponent = ({id,Img,TypeIcon,Title,Desc,Type}) => {
             <h1 className="modal-title fs-5" id="exampleModalLabel">تعديل التخصص</h1>
             <button Type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
           </div>
-          {ErrorMessage?
-    <div className='alert alert-success'>
-      <p>{ErrorMessage}</p>
-    </div>:""}
+          
           <div className="mb-3">
             <label htmlFor="title" className="form-label fw-bold mb-3">
               عنوان التخصص
@@ -213,7 +230,7 @@ const SpecialtiesComponent = ({id,Img,TypeIcon,Title,Desc,Type}) => {
           </div>
 
           <div className='text-start'>
-            <button Type="submit" className='btn text-white rounded-3 mt-1 px-5 py-2' style={{ backgroundColor: 'rgba(31, 42, 68, 1)' }}>
+            <button Type="submit" className='btn text-white rounded-3 mt-1 px-5 py-2' data-bs-dismiss="modal" style={{ backgroundColor: 'rgba(31, 42, 68, 1)' }}>
               تعديل
             </button>
           </div>

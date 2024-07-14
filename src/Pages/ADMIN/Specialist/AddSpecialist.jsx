@@ -142,7 +142,7 @@ const AddSpecialist = () => {
       <div className="mt-3  ">
         <p className="fw-bold pt-2" style={{ fontSize: "18px" }}>
           {" "}
-          إضافة مرشد مهني
+          إضافة  متخصص
         </p>
       </div>
       <div className="border pb-4 rounded-2">
@@ -381,13 +381,41 @@ const AddSpecialist = () => {
         >
           <span className="">{selectedValueCategory || 'اختر التصنيف'}</span>
           </button>
-        <ul className={["dropdown-menu position- w-100 border-0  "].join(" ")}>
-        
-        <li><a className={[style.input ,style.smMargine,"dropdown-item", "form-control"].join(" ")} href="#" onClick={() => handleOptionClickType("تصنيف A")}>تصنيف A</a></li>
-        <li><a className={[style.input ,style.smMargine,"dropdown-item", "form-control"].join(" ")} href="#" onClick={() => handleOptionClickType("تصنيف B")}>تصنيف B</a></li>
-        <li><a className={[style.input ,style.smMargine,"dropdown-item", "form-control"].join(" ")} href="#" onClick={() => handleOptionClickType("تصنيف C")}>تصنيف C</a></li>
+          <ul className={["dropdown-menu position- w-100 border-0"].join(" ")}>
+  <li>
+    <div
+      className={[style.input, style.smMargine, "dropdown-item", "form-control"].join(" ")}
+      onClick={(e) => {
+        handleOptionClickType("تصنيف A");
+      }}
+    >
+      تصنيف A
+    </div>
+  </li>
+  <li>
+    <div
+      className={[style.input, style.smMargine, "dropdown-item", "form-control"].join(" ")}
+     
+      onClick={(e) => {
+        handleOptionClickType("تصنيف B");
+      }}
+    >
+      تصنيف B
+    </div>
+  </li>
+  <li>
+    <div
+      className={[style.input, style.smMargine, "dropdown-item", "form-control"].join(" ")}
 
-        </ul>
+      onClick={(e) => {
+        handleOptionClickType("تصنيف C");
+      }}
+    >
+      تصنيف C
+    </div>
+  </li>
+</ul>
+
       </div>
       {formik.touched.Category && formik.errors.Category ? (
         <div className="alert py-1 alert-danger ">

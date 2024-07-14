@@ -1,4 +1,3 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './App.css';
 // import Login from './Pages/Login/Login';
 // import Register from './Pages/Register/Register';
@@ -40,74 +39,55 @@ import MentorDetails from './Pages/CareerGuidance/MentorDetails';
 import SpecialistPage from './Pages/Specialist/SpecialistPage';
 import ShowSpecialistDetails from './Pages/Specialist/ShowSpecialistDetails';
 import ContactWithUs from './Pages/ADMIN/ContactWithUs/ContactWithUs';
+import NotFound from './Pages/NotFound/NotFound';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
-  let router = createBrowserRouter([
-    // {path:'/',element:<Login/>},
-    // {path:'/signUp',element:<Register/>},
-    // {path:'/VerifyEmail/:userToken',element:<VerifyEmail/>},
-    // {path:'/ForgetPassword',element:<ForgetPassword/>},
-    // {path:'/OTP',element:<OTP/>},
-    // {path:'/ResetPassword',element:<ResetPassword/>},
-    {path:'/Admin',element:<LoginAdmin/>},
-    {path:'/Admin',element: <LayoutAdmin />,children:[
-      {path:'AdminHomePage',element:<AdminHomePage/>},
-      {path:'Pages',element:<Pages/>},
-      {path:'Specialties',element:<Specialties/>},
-      {path:'addNewSpecialties',element:<AddNewSpecialties/>},
-      {path:'MainSpecialties/:id',element:<MainSpecialties/>},
-      {path:'AddNewSubSpecialties/:MainTitle',element:<AddNewSubSpecialties/>},
-      {path:'Certificates',element:<Certificates/>},
-      {path:'AddNewCertificate',element:<AddNewCertificate/>},
-      {path:'ShowCertificate/:id',element:<ShowCertificate/>},
-      {path:'Advisors',element:<Advisors/>},
-      {path:'AddAdvisors',element:<AddAdvisors/>},
-      {path:'ShowAdvisors/:id',element:<ShowAdvisors/>},
-      {path:'Specialist',element:<Specialist/>},
-      {path:'AddSpecialist',element:<AddSpecialist/>},
-      {path:'ShowSpecialist/:id',element:<ShowSpecialist/>},
-      {path:'ContactWithUs',element:<ContactWithUs/>},
-
-
-      
-
-
-    ]},
-    {path:'',element: <Layout />,children:[
-      {path:'/',element:<HomePage/>},
-      {path:'/AboutUs',element:<AboutUs/>},
-      {path:'/OurServices',element:<OurServices/>},
-      {path:'/ContactUs',element:<ContactUs/>},
-      {path:'/Search',element:<Search/>},
-      {path:'/ProfessionalCertificationSpecialties',element:<ProfessionalCertificationSpecialties/>},
-      {path:'/ProfessionalCertificationSubSpecialties/:id',element:<ProfessionalCertificationSubSpecialties/>},
-      {path:'/professionalCertifications/:id',element:<ProfessionalCertification/>},
-      {path:'/CertificateDetails/:id',element:<CertificateDetails/>},
-      {path:'/CareerGuidance',element:<CareerGuidance/>},
-      {path:'/MentorDetails/:id',element:<MentorDetails/>},
-      {path:'/SpecialistPage',element:<SpecialistPage/>},
-      {path:'/ShowSpecialistDetails/:id',element:<ShowSpecialistDetails/>},
-      
-
-      
-      
-      
-      
-
-      
-      
-      
-    ]},
-    
-   
-    
-  ])
   return (
-    <div className='m-0  p-0'>
-    <Provider store={ConfigurationStore}>
-    <RouterProvider router={router}/>
-    </Provider>
-      
+    <div className='m-0 p-0'>
+      <Provider store={ConfigurationStore}>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<HomePage />} />
+              <Route path="AboutUs" element={<AboutUs />} />
+              <Route path="OurServices" element={<OurServices />} />
+              <Route path="ContactUs" element={<ContactUs />} />
+              <Route path="Search" element={<Search />} />
+              <Route path="ProfessionalCertificationSpecialties" element={<ProfessionalCertificationSpecialties />} />
+              <Route path="ProfessionalCertificationSubSpecialties/:id" element={<ProfessionalCertificationSubSpecialties />} />
+              <Route path="professionalCertifications/:id" element={<ProfessionalCertification />} />
+              <Route path="CertificateDetails/:id" element={<CertificateDetails />} />
+              <Route path="CareerGuidance" element={<CareerGuidance />} />
+              <Route path="MentorDetails/:id" element={<MentorDetails />} />
+              <Route path="SpecialistPage" element={<SpecialistPage />} />
+              <Route path="ShowSpecialistDetails/:id" element={<ShowSpecialistDetails />} />
+              <Route path="*" element={<NotFound />} />
+            </Route>
+            <Route path="/Admin" element={<LoginAdmin />} />
+            <Route path="/Admin" element={<LayoutAdmin />}>
+              <Route path="AdminHomePage" element={<AdminHomePage />} />
+              <Route path="Pages" element={<Pages />} />
+              <Route path="Specialties" element={<Specialties />} />
+              <Route path="addNewSpecialties" element={<AddNewSpecialties />} />
+              <Route path="MainSpecialties/:id" element={<MainSpecialties />} />
+              <Route path="AddNewSubSpecialties/:MainTitle" element={<AddNewSubSpecialties />} />
+              <Route path="Certificates" element={<Certificates />} />
+              <Route path="AddNewCertificate" element={<AddNewCertificate />} />
+              <Route path="ShowCertificate/:id" element={<ShowCertificate />} />
+              <Route path="Advisors" element={<Advisors />} />
+              <Route path="AddAdvisors" element={<AddAdvisors />} />
+              <Route path="ShowAdvisors/:id" element={<ShowAdvisors />} />
+              <Route path="Specialist" element={<Specialist />} />
+              <Route path="AddSpecialist" element={<AddSpecialist />} />
+              <Route path="ShowSpecialist/:id" element={<ShowSpecialist />} />
+              <Route path="ContactWithUs" element={<ContactWithUs />} />
+              <Route path="*" element={<NotFound />} />
+            </Route>
+            
+          </Routes>
+        </Router>
+      </Provider>
     </div>
   );
 }

@@ -59,11 +59,11 @@ const ShowSpecialist = () => {
       Services: Yup.string().required("هذا الحقل مطلوب"),
       PriceOfServices: Yup.string().required("هذا الحقل مطلوب"),
       Category:Yup.string().required("هذا الحقل مطلوب"),
-      email: Yup.string().required("هذا الحقل مطلوب"),
-      linkedIn: Yup.string().url("Invalid URL").required("هذا الحقل مطلوب"),
-      X: Yup.string().url("Invalid URL").required("هذا الحقل مطلوب"),
-      website: Yup.string().url("Invalid URL").required("هذا الحقل مطلوب"),
-      Rate: Yup.number().required("هذا الحقل مطلوب"),
+      email: Yup.string(),
+      linkedIn: Yup.string().url("Invalid URL"),
+      X: Yup.string().url("Invalid URL"),
+      website: Yup.string().url("Invalid URL"),
+      Rate: Yup.number(),
     }),
     onSubmit: UpdateAdvisor,
   });
@@ -89,6 +89,7 @@ const ShowSpecialist = () => {
         console.log(res.payload);
         if(res.payload.success){
             toast.success(res.payload.message)
+            navigate(-1)
         }else{
             toast.error(res.payload.data.message)
         }
@@ -426,9 +427,9 @@ const ShowSpecialist = () => {
           </button>
         <ul className={["dropdown-menu position- w-100 border-0  "].join(" ")}>
         
-        <li><a className={[style.input ,style.smMargine,"dropdown-item", "form-control"].join(" ")} href="#" onClick={() => handleOptionClickType("تصنيف A")}>تصنيف A</a></li>
-        <li><a className={[style.input ,style.smMargine,"dropdown-item", "form-control"].join(" ")} href="#" onClick={() => handleOptionClickType("تصنيف B")}>تصنيف B</a></li>
-        <li><a className={[style.input ,style.smMargine,"dropdown-item", "form-control"].join(" ")} href="#" onClick={() => handleOptionClickType("تصنيف C")}>تصنيف C</a></li>
+        <li><div className={[style.input ,style.smMargine,"dropdown-item", "form-control"].join(" ")} onClick={() => handleOptionClickType("تصنيف A")}>تصنيف A</div></li>
+        <li><div className={[style.input ,style.smMargine,"dropdown-item", "form-control"].join(" ")} onClick={() => handleOptionClickType("تصنيف B")}>تصنيف B</div></li>
+        <li><div className={[style.input ,style.smMargine,"dropdown-item", "form-control"].join(" ")} onClick={() => handleOptionClickType("تصنيف C")}>تصنيف C</div></li>
 
         </ul>
       </div>

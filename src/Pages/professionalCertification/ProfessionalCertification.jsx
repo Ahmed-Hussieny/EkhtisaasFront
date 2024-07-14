@@ -71,7 +71,7 @@ const ProfessionalCertification = () => {
       <div className='px-3 my-5 '>
         <div className='row gy-3 align-items-center'>
           <div className='col-md-5 text-center'>
-            <img src={SubSpecialtyData?.Image?.secure_url} className='w-50' alt=''/>
+            <img style={{height:'300px'}} src={SubSpecialtyData?.Image?.secure_url} className='w-50' alt=''/>
           </div>
           <div className='col-md-7'>
             <div className='d-flex align-items-center'>

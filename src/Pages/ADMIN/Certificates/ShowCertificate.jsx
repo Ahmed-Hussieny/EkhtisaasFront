@@ -466,7 +466,18 @@ const ShowCertificate = () => {
         <ul className={["dropdown-menu position- w-100 border-0  "].join(" ")}>
         
         {subSpecialty.map((el)=>{
-          return <li><a className={[style.input ,style.smMargine,"dropdown-item", "form-control"].join(" ")} href="#" onClick={() => handleOptionClickSubSpecialty(el._id,el.Title)}>{el.Title}</a></li>
+          return (
+  <li key={el._id}>
+    <div
+      className={[style.input, style.smMargine, "dropdown-item", "form-control"].join(" ")}
+      onClick={(e) => {
+        handleOptionClickSubSpecialty(el._id, el.Title);
+      }}
+    >
+      {el.Title}
+    </div>
+  </li>
+);
         })}
         </ul>
       </div>
@@ -601,13 +612,43 @@ const ShowCertificate = () => {
         >
           <span className="">{selectedValueLevel || 'اختر مستوي الشهاده'}</span>
           </button>
-        <ul className={["dropdown-menu position- w-100 border-0  "].join(" ")}>
-        
-        <li><a className={[style.input ,style.smMargine,"dropdown-item", "form-control"].join(" ")} href="#" onClick={() => handleOptionClickType("مبتدئ")}>مبتدئ</a></li>
-        <li><a className={[style.input ,style.smMargine,"dropdown-item", "form-control"].join(" ")} href="#" onClick={() => handleOptionClickType("متوسط")}>متوسط</a></li>
-        <li><a className={[style.input ,style.smMargine,"dropdown-item", "form-control"].join(" ")} href="#" onClick={() => handleOptionClickType("عالي")}>عالي</a></li>
+          <ul className={["dropdown-menu position- w-100 border-0"].join(" ")}>
+  <li>
+    <div
+      className={[style.input, style.smMargine, "dropdown-item", "form-control"].join(" ")}
+     
+      onClick={(e) => {
+       
+        handleOptionClickType("مبتدئ");
+      }}
+    >
+      مبتدئ
+    </div>
+  </li>
+  <li>
+    <div
+      className={[style.input, style.smMargine, "dropdown-item", "form-control"].join(" ")}
+     
+      onClick={(e) => {
+        handleOptionClickType("متوسط");
+      }}
+    >
+      متوسط
+    </div>
+  </li>
+  <li>
+    <div
+      className={[style.input, style.smMargine, "dropdown-item", "form-control"].join(" ")}
+      
+      onClick={(e) => {
+        handleOptionClickType("عالي");
+      }}
+    >
+      عالي
+    </div>
+  </li>
+</ul>
 
-        </ul>
       </div>
       {formik.touched.Level && formik.errors.Level ? (
         <div className="alert py-1 alert-danger ">

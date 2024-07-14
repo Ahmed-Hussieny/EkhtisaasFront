@@ -87,7 +87,7 @@ const AddAdvisors = () => {
         }else{
             toast.error(res.payload.data.message)
         }
-        setloding(true)
+    setloding(false)
 
   }
   const dispatch = useDispatch();
